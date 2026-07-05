@@ -4,8 +4,8 @@ export const site = {
   email: "richardthebrucewayne@gmail.com",
   github: "https://github.com/RichardTheBruce",
   linkedin: "https://www.linkedin.com/in/richard-wayne-nuro",
-  x: "https://x.com/RichardTheBruce", // pending account creation
-  telegram: "https://t.me/richardthebruce", // pending channel creation
+  x: "", // set to https://x.com/RichardTheBruce once the handle is claimed
+  telegram: "", // set to https://t.me/richardthebruce once the channel exists
   discord: "https://discord.gg/PLACEHOLDER", // pending server creation
   calendar: "", // cal.com link when Richard creates it; hide button when empty
 };
