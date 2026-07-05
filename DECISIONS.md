@@ -8,7 +8,7 @@
 - **Source:** taste-skill v2 (tasteskill.dev, `npx skills add Leonxlnx/taste-skill`) + `memory/richard_taste_profile.md` (LOCKED 2026-06-02)
 - **Decision:** Richard asked to use tasteskill.dev. Its core value (brief inference, anti-template output, dark-mode discipline, honest pre-flight validation) was adopted as the PLAN.md §0.1 pre-flight checklist. Where taste-skill's generic guidance could conflict with Richard's locked profile (Obsidian/Graphite, #0D90FF-only accent, GSAP canon), the locked profile wins. No skill files installed into the repo; principles inlined so the build is deterministic.
 - **Alternatives considered:** installing the skill wholesale and letting it infer a design system (rejected: Richard already has a locked, superior brief; inference risk with zero upside).
-- **Status:** Shipped in PLAN.md.
+- **Status:** Shipped in PLAN.md. **Superseded 2026-07-05 by Richard's direct order:** full install executed, all 13 skills from Leonxlnx/taste-skill now user-global in `~/.claude/skills/` (brandkit, design-taste-frontend v1+v2, gpt-taste, high-end-visual-design, image-to-code, imagegen-frontend-web/mobile, industrial-brutalist-ui, minimalist-ui, full-output-enforcement, redesign-existing-projects, stitch-design-taste). Precedence rule unchanged: Richard's locked taste profile wins any conflict with generic skill guidance.
 
 ## RW-0002 · 2026-07-05 · Corpus sweep + the Indutex before/after finding
 
@@ -21,4 +21,4 @@
 - **Source:** Mythos main loop (routing per MX-0015: Fable plans, sonnet deploys, Fable reviews)
 - **Decision:** Build `richardwayne-site` as a NEW Next.js app at `richardwayne-site/site`, separate from the existing art portfolio repo (`RichardTheBruce/portfolio`, "He who creates", Saturn marquee). Rationale: the art portfolio optimizes for wonder; a lead-gen site optimizes for conversion and SEO. Mixing them dilutes both. The art portfolio gets linked as "The Lab" inside /about, preserving its value as a capability proof. Domain target `richardthebruce.dev` (referenced by the portfolio repo but DNS does not resolve; purchase pending, Richard).
 - **Alternatives considered:** rebuilding inside `Richard Wayne/portfolio` (rejected: deployment-protection-gated team project + art-first IA); Upwork-first positioning (rejected by Richard: "upwork is full of scams").
-- **Status:** In build (sonnet agent from PLAN.md). Flip to Shipped after main-loop review + walk-attest.
+- **Status:** Shipped-local 2026-07-05, walk-attested (`mythos/intelligence/captured/walk-attest/2026-07-05-richardwayne-site-local.json`). 13 routes, clean build, AFI rebrand swept (grep-proven: only the LinkedIn URL still contains the string). Main-loop review found + fixed one issue (unclaimed X/Telegram footer links, commit 02575c0). Production deploy blocked on domain purchase (DEPLOY.md).

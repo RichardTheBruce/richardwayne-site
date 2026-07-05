@@ -18,8 +18,6 @@ const caseStudyDescriptions: Record<string, string> = {
     "Omni-X case study: co-founding the first natively omnichain NFT platform.",
   "federal-ppe":
     "Federal-scale PPE supplier case study: a storefront rebuild plus a signal pipeline over public procurement data.",
-  cryptogal:
-    "CryptoGal case study: a warm crypto-education app for women with a real wallet and a scam analyzer.",
 };
 
 export function generateStaticParams() {

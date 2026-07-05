@@ -50,31 +50,6 @@ function GalleryFrame({ image }: { image: WorkImage }) {
 export function WorkGallery({ images }: { images: WorkImage[] }) {
   if (images.length === 0) return null;
 
-  const isPhoneRow = images.length >= 3 && images.every((img) => img.src.includes("cryptogal"));
-
-  if (isPhoneRow) {
-    return (
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {images.map((image) => (
-          <figure
-            key={image.src}
-            className="overflow-hidden rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--bg-2)]"
-          >
-            <div className="relative aspect-[9/16] w-full">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(min-width: 768px) 260px, 45vw"
-                className="object-cover object-top"
-              />
-            </div>
-          </figure>
-        ))}
-      </div>
-    );
-  }
-
   return (
     <div className="grid gap-6 sm:grid-cols-2">
       {images.map((image) => (

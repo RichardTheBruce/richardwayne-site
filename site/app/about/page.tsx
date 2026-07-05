@@ -26,7 +26,7 @@ const timelineEntries = [
   },
   {
     period: "2025 to now",
-    body: "Founding AFI, the agentic bank. Also shipping client builds: a federal PPE supplier's lead engine and CryptoGal.",
+    body: "Founding AFI, the agentic bank. Also shipping client builds, including a federal PPE supplier's lead engine.",
   },
 ];
 

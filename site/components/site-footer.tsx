@@ -6,7 +6,6 @@ const workLinks = [
   { label: "Memetropolis", href: "/work/memetropolis" },
   { label: "Omni-X", href: "/work/omni-x" },
   { label: "Federal-scale PPE supplier", href: "/work/federal-ppe" },
-  { label: "CryptoGal", href: "/work/cryptogal" },
 ];
 
 export function SiteFooter() {

@@ -139,34 +139,6 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    slug: "cryptogal",
-    title: "CryptoGal",
-    role: "Product Engineer · 2026",
-    summary:
-      "A warm crypto-education app for women: guided lessons, a real wallet, and a scam analyzer that reads suspicious messages before they cost someone their savings.",
-    chips: ["React Native", "Expo", "Supabase"],
-    cardImage: {
-      src: "/work/cryptogal-home.png",
-      alt: "CryptoGal app home screen on a phone",
-    },
-    problem:
-      "Crypto education apps talk down to beginners or drown them in charts. Women getting into crypto deserved a product that respects both their intelligence and their caution.",
-    build:
-      "An Expo and React Native app: guided lesson journeys, a real Supabase-backed wallet flow, community, and a scam analyzer that reads suspicious messages and explains the red flags in plain language.",
-    hardPart:
-      "Tone is an engineering constraint here. Every surface, from the wallet to the scam verdicts, had to feel warm without being imprecise.",
-    outcome: "In active development with the founder of CryptoGal LLC.",
-    gallery: [
-      { src: "/work/cryptogal-home.png", alt: "CryptoGal app home screen" },
-      { src: "/work/cryptogal-learn.png", alt: "CryptoGal guided lesson screen" },
-      {
-        src: "/work/cryptogal-scam-analyzer.png",
-        alt: "CryptoGal scam analyzer reading a suspicious message",
-      },
-      { src: "/work/cryptogal-wallet.png", alt: "CryptoGal wallet screen" },
-    ],
-  },
 ];
 
 export function getCaseStudy(slug: string) {
