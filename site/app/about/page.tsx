@@ -7,7 +7,7 @@ import { DockRow } from "@/components/dock-row";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Richard Wayne: founder-engineer since age 14. Co-founded the first omnichain NFT platform, founded a $300K cross-chain launchpad, and now builds the agentic bank Nuro Finance.",
+    "Richard Wayne: founder-engineer since age 14. Co-founded the first omnichain NFT platform, founded a $300K cross-chain launchpad, and now builds the agentic bank AFI.",
 };
 
 const timelineEntries = [
@@ -26,7 +26,7 @@ const timelineEntries = [
   },
   {
     period: "2025 to now",
-    body: "Founding Nuro Finance, the agentic bank. Also shipping client builds: a federal PPE supplier's lead engine and CryptoGal.",
+    body: "Founding AFI, the agentic bank. Also shipping client builds: a federal PPE supplier's lead engine and CryptoGal.",
   },
 ];
 

@@ -60,7 +60,7 @@ Tokens (CSS variables in globals):
 ```
 /                     Home (the funnel)
 /work                 Index of case studies (grid)
-/work/nuro-finance    Case study
+/work/afi             Case study
 /work/memetropolis    Case study
 /work/omni-x          Case study
 /work/federal-ppe     Case study (Indutex, see naming note)
@@ -103,7 +103,7 @@ export const site = {
 
 **Selected Work** (the core section; 5 large cards, scroll-driven reveal, each = screenshot + copy):
 Card order and copy (title / role / line / chips):
-1. Nuro Finance. `Founder and Lead Architect` / `An agentic bank where you talk to your Visa card and a bonded AI agent moves your money. Nothing counts as done without a confirmed on-chain transaction hash, so the agent cannot lie about what it did.` / chips: `AI agents` `LayerZero V2` `Circle CCTP` `Visa rails` `PostgreSQL`. Image: `nuro-card.png` (dark card art).
+1. AFI. `Founder and Lead Architect` / `An agentic bank where you talk to your Visa card and a bonded AI agent moves your money. Nothing counts as done without a confirmed on-chain transaction hash, so the agent cannot lie about what it did.` / chips: `AI agents` `LayerZero V2` `Circle CCTP` `Visa rails` `PostgreSQL`. Image: `afi-card.png` (dark card art).
 2. Memetropolis. `Founder and CTO` / `The first OFT launchpad on LayerZero, live across 7 EVM chains. About $300K invested, 810 commits, 5,000 users at launch, and concurrency that holds when two users hit the same second.` / chips: `Solidity` `LayerZero V2` `Subgraph` `Next.js`. Image: `memetropolis-landing-crop.png`.
 3. Omni-X. `Co-Founder · 2022` / `The first natively omnichain NFT platform. Creator of Greg, the first onchain ONFT, and auditor of the original Gh0stly Gh0sts contract, the first omnichain NFT collection.` / chips: `ONFT` `LayerZero` `Marketplace`. Image: `omnix-landing.png`.
 4. Federal-scale PPE supplier. `Solo Engineer · 2026` / `A modern storefront plus a signal-driven outbound engine over SAM.gov, OSHA, and FEMA data. Every lead lands enriched with affected-population estimates and SKU recommendations before the sales team wakes up.` / chips: `Next.js` `Postgres` `Signal pipeline` `Vercel`. Image: `ppe-rebuild-landing-crop.png`.
@@ -135,7 +135,7 @@ Grid of the 5 cases + a sixth card `The Lab` linking to /about#more with image `
 Sections: Hero (title, role+dates, one-paragraph summary), `The problem`, `The build`, `The hard part` (this is the differentiator, be specific), `Outcome`, stack chip row, screenshot gallery (styled frames, dark borders), prev/next case nav, CTA band.
 Write case bodies from these source blocks (verbatim where possible):
 
-**nuro-finance**: Problem: `Everyone fears the same thing about AI agents: an agent that says it did something and did not do it. Handing one real money makes that fear existential.` Build: `Four money surfaces in one product: Vault, Pay Card, Agent, and Crypto Wallet. Drag a glyph to move money, tap to move around the app. Intent and execution are separate layers. The lifecycle is intent (pending), execution (confirmed with an on-chain transaction hash), then settled (paid with a payout hash). Per-user vaults are HD-derived on Base. A 23-chain settlement matrix routes through LayerZero V2 and Circle CCTP, including the Solana to EVM route most teams stall on. Visa card settlement runs on idempotent webhooks with a post-swap credit policy so the user carries volatility, not the platform.` Hard part: `Making "done" unfakeable. The agent runtime executes its decision loop hundreds of times a day, every action logged, every flag kill-switched, and nothing counts as moved until the chain proves it.` Outcome: `In production on PM2 and a VPS, with risky on-chain paths shipping observe-only for their first 24 hours. Images: nuro-card.png, nuro-agentic-card.png.`
+**afi**: Problem: `Everyone fears the same thing about AI agents: an agent that says it did something and did not do it. Handing one real money makes that fear existential.` Build: `Four money surfaces in one product: Vault, Pay Card, Agent, and Crypto Wallet. Drag a glyph to move money, tap to move around the app. Intent and execution are separate layers. The lifecycle is intent (pending), execution (confirmed with an on-chain transaction hash), then settled (paid with a payout hash). Per-user vaults are HD-derived on Base. A 23-chain settlement matrix routes through LayerZero V2 and Circle CCTP, including the Solana to EVM route most teams stall on. Visa card settlement runs on idempotent webhooks with a post-swap credit policy so the user carries volatility, not the platform.` Hard part: `Making "done" unfakeable. The agent runtime executes its decision loop hundreds of times a day, every action logged, every flag kill-switched, and nothing counts as moved until the chain proves it.` Outcome: `In production on PM2 and a VPS, with risky on-chain paths shipping observe-only for their first 24 hours. Images: afi-card.png, afi-agentic-card.png.`
 
 **memetropolis**: Problem: `Launching a token on one chain is a solved problem. Launching the same token across 7 chains at once, with liquidity and state that stay coherent, is not.` Build: `The first OFT launchpad on LayerZero: Solidity contracts, TypeScript backend, subgraph indexing, Next.js frontend. Multi-chain peer wiring, per-chain gas configuration, Etherscan verification on every chain.` Hard part: `Concurrency. Two users hitting the launchpad in the same second used to mean colliding nonces and stranded funds. The fix that held: Postgres advisory locks plus per-address chain locks plus fresh-fetched nonces. Not naive sequential signing.` Outcome: `About $300K invested, 810 commits, 5,000 users at launch, live across 7 EVM chains.` Image: memetropolis-landing.png (full, scrollable frame).
 
@@ -162,7 +162,7 @@ CTA band.
   - `2016 to 2022` : `A decade of building begins in earnest: full-stack product work, systems, and the habit of shipping alone.`
   - `2022` : `Co-founded Omni-X, the first natively omnichain NFT platform. Created Greg, the first onchain ONFT. Advised a Rutgers electrical engineering senior capstone team as their engineering advisor.`
   - `2024 to 2025` : `Founded Memetropolis: the first OFT launchpad on LayerZero, 7 chains, about $300K invested, 810 commits.`
-  - `2025 to now` : `Founding Nuro Finance, the agentic bank. Also shipping client builds: a federal PPE supplier's lead engine and CryptoGal.`
+  - `2025 to now` : `Founding AFI, the agentic bank. Also shipping client builds: a federal PPE supplier's lead engine and CryptoGal.`
 - Education line (small, after timeline): `Rutgers University, summa cum laude.`
 - `How I ship so fast` block: `I designed and operate a personal AI neural net: a persistent memory, agent roster, and decision-ledger system that pairs with me on every build. Most consultants bill you hours to remember your codebase. Mine compounds.`
 - `#more` anchor, "More builds" grid: The Lab (`A physics playground: 90,000-particle heroes, string fields, a Saturn that becomes your cursor.` image lab-saturn.png, link https://github.com/RichardTheBruce/portfolio), 2gather (`A members-only social app: Expo, Supabase, realtime presence, 13 tables, shipped as a one-day marathon.` image 2gather-landing.png), me.md (`A portable local-LLM digital twin you fill with yourself. npm-installable, git-versioned self-states.` link https://github.com/RichardTheBruce/me-md).
@@ -197,7 +197,7 @@ Keep everything else still. Restraint is the brand.
 ## 6. SEO spec (do all of it)
 
 - `metadataBase` from site.url. Title template `%s · Richard Wayne`. Home title: `Richard Wayne · Founding Engineer for AI Agents, Cross-Chain, and Full-Stack Builds`. Home description: `Founding engineer for hire. I build AI agent systems that execute under proof, cross-chain infrastructure on LayerZero and Circle CCTP, and full-stack products that hold at 100K users. Coding since 14, shipping for 10 years.`
-- Per-page unique title+description (write from each page's copy). Case studies: `Nuro Finance case study: an agentic bank with an agent that cannot lie` etc.
+- Per-page unique title+description (write from each page's copy). Case studies: `AFI case study: an agentic bank with an agent that cannot lie` etc.
 - `app/sitemap.ts` (all routes), `app/robots.ts` (allow all, sitemap ref).
 - JSON-LD via `<script type="application/ld+json">`: Person on all pages (name, url, sameAs: github/linkedin/x/telegram, jobTitle `Founding Engineer`, alumniOf Rutgers University), ProfessionalService on /services + home (serviceType list), Article on both posts, BreadcrumbList on case studies.
 - `app/opengraph-image.tsx`: 1200x630 dark card, obsidian bg, name in Space Grotesk, accent path underline, tagline `Founding engineer. AI agents, cross-chain, full stack.` Per-case-study og images can reuse the default (fine for v1).
@@ -221,7 +221,7 @@ Keep everything else still. Restraint is the brand.
 
 - `npm run build` completes with zero errors and zero type errors.
 - Every route renders real content (no lorem, no placeholder text except the two social PLACEHOLDER URLs which must be hidden from render).
-- All 13 staged images used somewhere meaningful (2gather-landing.png and lab-saturn.png on /about, nuro-agentic-card.png on the Nuro case).
+- All 13 staged images used somewhere meaningful (2gather-landing.png and lab-saturn.png on /about, afi-agentic-card.png on the AFI case).
 - No em-dash characters anywhere in the rendered site (grep the repo for `—` and `–`).
 - Home paints hero text without waiting for canvas JS.
 - Works at 375px width without horizontal scroll.

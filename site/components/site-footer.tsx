@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getVisibleChannels, site } from "@/lib/site";
 
 const workLinks = [
-  { label: "Nuro Finance", href: "/work/nuro-finance" },
+  { label: "AFI", href: "/work/afi" },
   { label: "Memetropolis", href: "/work/memetropolis" },
   { label: "Omni-X", href: "/work/omni-x" },
   { label: "Federal-scale PPE supplier", href: "/work/federal-ppe" },

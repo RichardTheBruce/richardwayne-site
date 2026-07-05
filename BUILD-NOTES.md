@@ -4,7 +4,7 @@ Everything else in PLAN.md was implemented as written. This file lists every pla
 
 ## 1. Product screenshots carry their own colors (accent-color rule)
 
-PLAN.md section 0 rule 5 says `#0D90FF` is the only decorative color. The staged case study images (`nuro-card.png`, `memetropolis-landing.png`, `omnix-landing.png`, the PPE before/after shots, the CryptoGal phone screens) are real product screenshots and card art that carry their own brand colors: crypto logo orange/purple, Memetropolis neon purple/yellow, Indutex red/blue, CryptoGal pink. These are documentary content, not decoration I chose. The rule is applied to everything I actually design: buttons, borders, chips, backgrounds, icons, JSON-LD, motion effects. All of those are strictly greyscale plus the one accent. I did not recolor, filter, or otherwise alter the client screenshots to force them toward greyscale, since that would misrepresent the actual products. This is a judgment call, flagging it rather than silently deciding it.
+PLAN.md section 0 rule 5 says `#0D90FF` is the only decorative color. The staged case study images (`afi-card.png`, `memetropolis-landing.png`, `omnix-landing.png`, the PPE before/after shots, the CryptoGal phone screens) are real product screenshots and card art that carry their own brand colors: crypto logo orange/purple, Memetropolis neon purple/yellow, Indutex red/blue, CryptoGal pink. These are documentary content, not decoration I chose. The rule is applied to everything I actually design: buttons, borders, chips, backgrounds, icons, JSON-LD, motion effects. All of those are strictly greyscale plus the one accent. I did not recolor, filter, or otherwise alter the client screenshots to force them toward greyscale, since that would misrepresent the actual products. This is a judgment call, flagging it rather than silently deciding it.
 
 ## 2. OG image uses the system default bold sans, not Space Grotesk
 
@@ -41,3 +41,18 @@ Next.js 16 ships an opt-in `cacheComponents` flag (Partial Prerendering plus the
 - `site.calendar` is empty, so the "Book a 30-minute scope call" button on /contact does not render, per spec (hide when empty).
 - Pricing is intentionally omitted from /services behind a comment, per explicit instruction pending Richard's sign-off.
 - No real domain is live yet; `NEXT_PUBLIC_SITE_URL` falls back to `https://richardthebruce.dev` for metadata/sitemap/JSON-LD purposes per `lib/site.ts`, matching DEPLOY.md's target domain.
+- `research` array in `lib/posts.ts` is empty, so the "Published research" block on /writing renders nothing, per spec (hide when empty). Richard fills in the two SSRN papers.
+
+## Rebrand pass: Nuro Finance to AFI (2026-07-05, Richard's correction via coordinator)
+
+Every user-visible "Nuro Finance" and "Nuro" on the site became "AFI":
+
+- Case study slug renamed: `/work/nuro-finance` is now `/work/afi`. The slug lives once in `lib/work.ts` and drives `generateStaticParams`, prev/next nav, and the sitemap, so those updated automatically; the footer work-links list and the `caseStudyDescriptions` metadata map in `app/work/[slug]/page.tsx` were updated by hand.
+- Image files renamed with `git mv` in BOTH `site/public/work/` AND `assets-staging/` (`nuro-card.png` to `afi-card.png`, `nuro-agentic-card.png` to `afi-agentic-card.png`). Renaming the staging copies too matters because `scripts/prep-images.mjs` copies staging into public by filename; renaming only the public copies would have let the next prep-images run silently reintroduce the old names.
+- Copy updates: home selected-work card title, case study title and metadata description, /about timeline "2025 to now" entry and page description, the AFI mention in the agents-that-cannot-lie post body, and both image alt texts.
+- PLAN.md updated as source of truth (IA route table, card 1 block, case body block header and image names, timeline entry, SEO example title, acceptance-criteria image note).
+- Judgment call, logged: DEPLOY.md ("request indexing" URL list) and CLIENT-ACQUISITION-PLAYBOOK.md (outreach example link, case-study name) referenced the old slug, which would 404 after the rename. Those URL and name references were updated even though the correction only named PLAN.md, because a deploy runbook pointing at a dead route is an operational landmine. DECISIONS.md was left untouched as a dated historical ledger.
+- Exception honored: the LinkedIn URL `https://www.linkedin.com/in/richard-wayne-nuro` in `lib/site.ts` (and its PLAN.md copy) stays as is. It is an address, not copy. It is the ONLY case-insensitive "nuro" match remaining in site source.
+- No redirect was added from the old slug: the site has never been deployed, so no external links or crawler state reference `/work/nuro-finance`.
+
+Also added in the same pass: the hidden-when-empty "Published research" block at the top of /writing, driven by the `research` array in `lib/posts.ts` (fields: title, venue, year, pages, url, oneLiner).

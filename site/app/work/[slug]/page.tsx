@@ -11,8 +11,7 @@ type Props = {
 };
 
 const caseStudyDescriptions: Record<string, string> = {
-  "nuro-finance":
-    "Nuro Finance case study: an agentic bank with an agent that cannot lie about what it did.",
+  afi: "AFI case study: an agentic bank with an agent that cannot lie about what it did.",
   memetropolis:
     "Memetropolis case study: the first OFT launchpad on LayerZero, live across 7 chains.",
   "omni-x":

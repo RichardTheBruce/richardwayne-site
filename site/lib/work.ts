@@ -21,15 +21,15 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "nuro-finance",
-    title: "Nuro Finance",
+    slug: "afi",
+    title: "AFI",
     role: "Founder and Lead Architect",
     summary:
       "An agentic bank where you talk to your Visa card and a bonded AI agent moves your money. Nothing counts as done without a confirmed on-chain transaction hash, so the agent cannot lie about what it did.",
     chips: ["AI agents", "LayerZero V2", "Circle CCTP", "Visa rails", "PostgreSQL"],
     cardImage: {
-      src: "/work/nuro-card.png",
-      alt: "Nuro Finance dark agentic bank card art",
+      src: "/work/afi-card.png",
+      alt: "AFI dark agentic bank card art",
     },
     problem:
       "Everyone fears the same thing about AI agents: an agent that says it did something and did not do it. Handing one real money makes that fear existential.",
@@ -41,12 +41,12 @@ export const caseStudies: CaseStudy[] = [
       "In production on PM2 and a VPS, with risky on-chain paths shipping observe-only for their first 24 hours.",
     gallery: [
       {
-        src: "/work/nuro-card.png",
-        alt: "Nuro Finance dark agentic bank card art",
+        src: "/work/afi-card.png",
+        alt: "AFI dark agentic bank card art",
       },
       {
-        src: "/work/nuro-agentic-card.png",
-        alt: "Nuro Finance agentic card interface showing agent-controlled payments",
+        src: "/work/afi-agentic-card.png",
+        alt: "AFI agentic card interface showing agent-controlled payments",
       },
     ],
   },

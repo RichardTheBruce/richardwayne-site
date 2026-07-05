@@ -42,7 +42,7 @@ Redeploy after setting (`npx vercel --prod`).
 1. Google Search Console → add property `richardthebruce.dev` (domain property, DNS TXT verify at registrar). RICHARD clicks, Mythos dictates.
 2. Submit `https://richardthebruce.dev/sitemap.xml`.
 3. Bing Webmaster Tools → import from GSC (one click).
-4. Request indexing on `/`, `/work/nuro-finance`, `/services`.
+4. Request indexing on `/`, `/work/afi`, `/services`.
 
 ## 6. Post-deploy verification (Mythos, walk-attest)
 

@@ -32,7 +32,7 @@ export default function AgentsThatCannotLiePost() {
           sentence: execution claimed, execution not proven.
         </p>
         <p>
-          That failure is why Nuro Finance, the agentic bank I am building,
+          That failure is why AFI, the agentic bank I am building,
           treats intent and execution as two separate layers instead of
           one. When you tell your card&apos;s agent to do something, that
           request becomes an intent: pending, unconfirmed, worth exactly
