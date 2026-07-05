@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+:root {
+  --bg-0: #060607;
+  --bg-1: #0b0b0d;
+  --bg-2: #111114;
+  --border: #1d1d21;
+  --border-bright: #2a2a30;
+
+  --text-0: #f4f4f5;
+  --text-1: #a1a1aa;
+  --text-2: #6b6b74;
+
+  --accent: #0d90ff;
+  --accent-dim: rgba(13, 144, 255, 0.12);
+
+  --radius-card: 12px;
+  --radius-button: 8px;
+}
+
+@theme inline {
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+  --color-border: var(--border);
+  --color-border-bright: var(--border-bright);
+  --color-text-0: var(--text-0);
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg-0);
+  color: var(--text-0);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--text-0);
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+.container-page {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.mono-label {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card-surface {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  transition: border-color 0.2s ease;
+}
+
+.card-surface:hover {
+  border-color: var(--border-bright);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-button);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #04070a;
+}
+
+.btn-primary:hover {
+  background: #2ea0ff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-0);
+  border: 1px solid var(--border-bright);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-1);
+  background: var(--bg-1);
+}
+
+.hairline {
+  border-color: var(--border);
+}
+
+/* Hero string field: canvas draws only on capable, motion-permitting
+   devices (see components/hero-canvas.tsx). The fallback below is a
+   cheap, non-animated repeating line pattern so touch / reduced-motion
+   visitors still get the intended visual texture without any JS cost. */
+.hero-static-fallback {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(161, 161, 170, 0.14) 0px,
+    rgba(161, 161, 170, 0.14) 1px,
+    transparent 1px,
+    transparent 26px
+  );
+  opacity: 1;
+}
+
+@media (pointer: coarse) {
+  .motion-safe-canvas {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe-canvas {
+    display: none;
+  }
+}
+
+@media not all and (pointer: coarse) {
+  @media not (prefers-reduced-motion: reduce) {
+    .hero-static-fallback {
+      display: none;
+    }
+  }
+}
+
+/* Magnetic buttons (GSAP enhances the transform in the motion layer;
+   the transition here keeps the return snappy if JS is unavailable). */
+.magnetic-btn {
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Scroll reveal: content is visible by default (readable with JS off);
+   GSAP + ScrollTrigger in the motion layer takes over the from-state. */
+.reveal-el {
+  opacity: 1;
+  transform: none;
+}
+
+/* Work card accent border draw-on. Hidden until GSAP marks the card as
+   in-view; falls back to a plain hover border via .card-surface. */
+.reveal-border {
+  opacity: 0;
+}
+
+.work-card.is-revealed .reveal-border {
+  opacity: 1;
+}
