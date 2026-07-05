@@ -225,3 +225,12 @@ Keep everything else still. Restraint is the brand.
 - No em-dash characters anywhere in the rendered site (grep the repo for `—` and `–`).
 - Home paints hero text without waiting for canvas JS.
 - Works at 375px width without horizontal scroll.
+
+---
+
+## AMENDMENTS (2026-07-05, post-build, Richard's live review)
+
+1. CryptoGal case study REMOVED sitewide (Richard: screenshots not showcase-grade). Data entry, route, footer link, gallery phone-row branch, about-timeline mention, and all cryptogal-*.png assets deleted. Site ships 4 case studies + The Lab card. Do not re-add without new, approved screens.
+2. Published research block on /writing is LIVE with Richard's two SSRN papers (consciousness framework, 19pp; The Unification Theory, 38pp). ID-to-title mapping is best-inference (SSRN blocks bots); swap the two url values if Richard corrects it.
+3. next.config images.deviceSizes capped at 1920 (fixes optimizer 404s on requests larger than source assets).
+4. X/Telegram footer links hidden until the accounts exist (empty strings in lib/site.ts).
