@@ -3,7 +3,7 @@ import { WorkCard } from "@/components/work-card";
 import { CtaBand } from "@/components/cta-band";
 import { HeroCanvas } from "@/components/hero-canvas";
 import { HeroPathTrace } from "@/components/hero-path-trace";
-import { StatBar } from "@/components/stat-bar";
+import { ProofLedger } from "@/components/proof-ledger";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ProfessionalServiceJsonLd } from "@/components/professional-service-jsonld";
 import { MagneticLink } from "@/components/magnetic-link";
@@ -77,44 +77,51 @@ const principles = [
   "Risky paths ship observe-only first",
 ];
 
-const proofBar = [
-  { value: "7", suffix: "", label: "chains in production" },
-  { value: "300", suffix: "K", prefix: "$", label: "launchpad shipped" },
-  { value: "23", suffix: "", label: "chain bridge matrix" },
-  { value: "2300", suffix: "+", label: "commits since 2024" },
-  { value: "5000", suffix: "", label: "users at launch" },
-];
-
 export default function Home() {
   return (
     <>
       <ProfessionalServiceJsonLd />
       <section className="relative overflow-hidden border-b border-[var(--border)]">
         <HeroCanvas />
-        <div className="container-page relative z-10 flex min-h-[88vh] flex-col justify-center py-24">
-          <p className="mono-label text-xs text-[var(--text-2)] sm:text-sm">
-            Founding engineer · AI agents · Cross-chain · Full stack
-          </p>
-          <h1 className="font-display mt-6 max-w-4xl text-[clamp(2.8rem,7vw,5.5rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[var(--text-0)]">
-            I build systems that move real money and hold at 100K users.
-          </h1>
-          <HeroPathTrace />
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
-            Richard Wayne. Founding engineer for the past 10 years. I take
-            products from idea to production: autonomous AI agents,
-            cross-chain infrastructure across 23 chains, and interfaces
-            people trust with their money.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <MagneticLink href="/contact" className="btn btn-primary">
-              Book a build call
-            </MagneticLink>
-            <MagneticLink href="/work" className="btn btn-secondary">
-              See the work
-            </MagneticLink>
+        <div className="container-page relative z-10 grid min-h-[88vh] items-center gap-12 py-24 lg:grid-cols-[7fr_5fr] lg:gap-16">
+          <div>
+            <p className="mono-label text-xs text-[var(--text-2)] sm:text-sm">
+              Founding engineer · AI agents · Cross-chain · Full stack
+            </p>
+            <h1 className="font-display mt-6 text-[clamp(2.6rem,5.2vw,4.4rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-[var(--text-0)]">
+              I build systems that move real money and hold at 100K users.
+            </h1>
+            <HeroPathTrace />
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
+              Richard Wayne. Founding engineer for the past 10 years. I take
+              products from idea to production: autonomous AI agents,
+              cross-chain infrastructure across 23 chains, and interfaces
+              people trust with their money.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <MagneticLink href="/contact" className="btn btn-primary">
+                Book a build call
+              </MagneticLink>
+              <MagneticLink href="/work" className="btn btn-secondary">
+                See the work
+              </MagneticLink>
+            </div>
           </div>
+          <ProofLedger />
+        </div>
+      </section>
 
-          <StatBar items={proofBar} />
+      <section className="border-b border-[var(--border)] py-24 sm:py-36">
+        <div className="container-page">
+          <ScrollReveal>
+            <p className="max-w-[860px] text-[clamp(1.5rem,3vw,2.4rem)] font-medium leading-[1.28] tracking-[-0.02em] text-[var(--text-0)] lg:ml-[14%]">
+              Everyone fears the agent that says done and did nothing.{" "}
+              <span className="text-[var(--text-2)]">
+                So I build systems where nothing counts as done without a
+                confirmed on-chain transaction hash.
+              </span>
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
