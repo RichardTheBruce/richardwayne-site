@@ -6,6 +6,21 @@ export type Post = {
   readTime: string;
 };
 
+export type ResearchPaper = {
+  title: string;
+  venue: string; // e.g. "SSRN"
+  year: number;
+  pages: number;
+  url: string;
+  oneLiner: string;
+};
+
+// Published research shown at the top of /writing. The block renders
+// nothing while this array is empty (same hidden-when-empty pattern as
+// the placeholder social URLs in lib/site.ts). Richard fills in the
+// SSRN papers here.
+export const research: ResearchPaper[] = [];
+
 export const posts: Post[] = [
   {
     slug: "agents-that-cannot-lie",

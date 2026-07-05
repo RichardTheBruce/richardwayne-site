@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { posts } from "@/lib/posts";
+import { posts, research } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -18,6 +18,38 @@ export default function WritingIndexPage() {
         <p className="mt-4 max-w-xl text-base text-[var(--text-1)]">
           Build stories with a real number, a real failure, and a real fix.
         </p>
+
+        {research.length > 0 ? (
+          <div className="mt-14">
+            <h2 className="mono-label text-xs text-[var(--text-2)]">
+              Published research
+            </h2>
+            <div className="mt-5 grid gap-4">
+              {research.map((paper) => (
+                <a
+                  key={paper.url}
+                  href={paper.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="card-surface block p-6"
+                >
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                    <h3 className="font-display text-lg font-semibold text-[var(--text-0)]">
+                      {paper.title}
+                    </h3>
+                    <span className="mono-label shrink-0 text-xs text-[var(--text-2)]">
+                      {paper.venue} &middot; {paper.year} &middot; {paper.pages}{" "}
+                      pages
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--text-1)]">
+                    {paper.oneLiner}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-14 divide-y divide-[var(--border)] border-y border-[var(--border)]">
           {posts.map((post) => (
