@@ -1,13 +1,61 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { getGsap } from "@/lib/gsap";
 import type { CaseStudy } from "@/lib/work";
 
 export function WorkCard({ study, index }: { study: CaseStudy; index: number }) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const rectRef = useRef<SVGRectElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    const svg = svgRef.current;
+    const rect = rectRef.current;
+    if (!card || !svg || !rect) return;
+
+    const length = rect.getTotalLength();
+    rect.style.strokeDasharray = `${length}`;
+    rect.style.strokeDashoffset = `${length}`;
+
+    const gsap = getGsap();
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          once: true,
+        },
+      });
+
+      tl.set(svg, { opacity: 1 }).fromTo(
+        rect,
+        { strokeDashoffset: length },
+        {
+          strokeDashoffset: 0,
+          duration: 0.9,
+          ease: "power2.inOut",
+        }
+      );
+
+      return () => {
+        tl.kill();
+      };
+    });
+
+    return () => mm.revert();
+  }, []);
+
   return (
     <Link
+      ref={cardRef}
       href={`/work/${study.slug}`}
       className="work-card card-surface group relative block overflow-hidden"
-      data-reveal-card
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-[var(--border)] bg-[var(--bg-1)]">
         <Image
@@ -40,10 +88,12 @@ export function WorkCard({ study, index }: { study: CaseStudy; index: number }) 
         </div>
       </div>
       <svg
+        ref={svgRef}
         className="reveal-border pointer-events-none absolute inset-0 h-full w-full"
         aria-hidden="true"
       >
         <rect
+          ref={rectRef}
           x="0.5"
           y="0.5"
           width="calc(100% - 1px)"

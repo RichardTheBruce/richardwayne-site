@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { MagneticLink } from "@/components/magnetic-link";
 
 export function CtaBand({
   heading,
@@ -21,9 +21,9 @@ export function CtaBand({
           {body}
         </p>
         <div className="mt-8">
-          <Link href={buttonHref} className="btn btn-primary magnetic-btn">
+          <MagneticLink href={buttonHref} className="btn btn-primary">
             {buttonLabel}
-          </Link>
+          </MagneticLink>
         </div>
       </div>
     </section>

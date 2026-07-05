@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { getGsap } from "@/lib/gsap";
 
 /**
  * Single 2px accent path that draws in under the hero H1 on load.
- * Static SVG by default (content readable with JS disabled); the motion
- * layer animates stroke-dashoffset via GSAP, respecting reduced-motion.
+ * Static SVG by default (content readable with JS disabled); GSAP
+ * animates stroke-dashoffset, scoped to motion-safe contexts only.
  */
 export function HeroPathTrace() {
   const pathRef = useRef<SVGPathElement>(null);
@@ -15,22 +16,25 @@ export function HeroPathTrace() {
     if (!path) return;
     const length = path.getTotalLength();
     path.style.strokeDasharray = `${length}`;
+    path.style.strokeDashoffset = "0";
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const gsap = getGsap();
+    const mm = gsap.matchMedia();
 
-    if (prefersReducedMotion) {
-      path.style.strokeDashoffset = "0";
-      return;
-    }
-
-    path.style.strokeDashoffset = `${length}`;
-    path.getBoundingClientRect();
-    path.style.transition = "stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1)";
-    requestAnimationFrame(() => {
-      path.style.strokeDashoffset = "0";
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        path,
+        { strokeDashoffset: length },
+        {
+          strokeDashoffset: 0,
+          duration: 1.2,
+          ease: "power2.out",
+          delay: 0.2,
+        }
+      );
     });
+
+    return () => mm.revert();
   }, []);
 
   return (

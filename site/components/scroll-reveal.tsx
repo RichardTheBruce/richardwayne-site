@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import { getGsap } from "@/lib/gsap";
 
 /**
- * Fade + rise scroll reveal. Content is rendered fully opaque and in
- * place by default (readable with JS disabled or before hydration);
- * once mounted, an IntersectionObserver flips a class that animates it
- * in via CSS transition. Respects prefers-reduced-motion by rendering
- * inert (no animation, always visible).
+ * Fade + rise scroll reveal via GSAP ScrollTrigger. Content renders fully
+ * visible in the DOM (readable with JS disabled or before hydration);
+ * gsap.matchMedia scopes the animation to motion-safe contexts only, so
+ * prefers-reduced-motion visitors get the static, always-visible layout.
  */
 export function ScrollReveal({
   children,
@@ -19,50 +19,38 @@ export function ScrollReveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [ready, setReady] = useState(false);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
-      setVisible(true);
-      return;
-    }
-
-    setReady(true);
     const el = ref.current;
     if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
+    const gsap = getGsap();
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            once: true,
+          },
         }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+      );
+    });
+
+    return () => mm.revert();
+  }, [delay]);
 
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={
-        ready
-          ? {
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0)" : "translateY(24px)",
-              transition: `opacity 0.6s ease ${delay}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
-            }
-          : undefined
-      }
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   );

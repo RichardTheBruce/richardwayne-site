@@ -6,6 +6,7 @@ import { HeroPathTrace } from "@/components/hero-path-trace";
 import { StatBar } from "@/components/stat-bar";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ProfessionalServiceJsonLd } from "@/components/professional-service-jsonld";
+import { MagneticLink } from "@/components/magnetic-link";
 import { caseStudies } from "@/lib/work";
 
 const offers = [
@@ -105,12 +106,12 @@ export default function Home() {
             people trust with their money.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <Link href="/contact" className="btn btn-primary magnetic-btn">
+            <MagneticLink href="/contact" className="btn btn-primary">
               Book a build call
-            </Link>
-            <Link href="/work" className="btn btn-secondary magnetic-btn">
+            </MagneticLink>
+            <MagneticLink href="/work" className="btn btn-secondary">
               See the work
-            </Link>
+            </MagneticLink>
           </div>
 
           <StatBar items={proofBar} />

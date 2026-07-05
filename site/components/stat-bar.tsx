@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { getGsap } from "@/lib/gsap";
 
 export type StatItem = {
   value: string;
@@ -9,48 +10,47 @@ export type StatItem = {
   label: string;
 };
 
-function useCountUp(target: number, active: boolean) {
-  const [display, setDisplay] = useState(active ? target : 0);
-  const started = useRef(false);
+function StatEntry({ item }: { item: StatItem }) {
+  const valueRef = useRef<HTMLSpanElement>(null);
+  const numeric = Number(item.value.replace(/[^0-9]/g, "")) || 0;
 
   useEffect(() => {
-    if (!active || started.current) return;
-    started.current = true;
+    const el = valueRef.current;
+    if (!el) return;
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const gsap = getGsap();
+    const mm = gsap.matchMedia();
 
-    if (prefersReducedMotion) {
-      setDisplay(target);
-      return;
-    }
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const counter = { value: 0 };
+      gsap.to(counter, {
+        value: numeric,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+          once: true,
+        },
+        onUpdate: () => {
+          el.textContent = `${item.prefix ?? ""}${Math.round(
+            counter.value
+          ).toLocaleString()}${item.suffix ?? ""}`;
+        },
+      });
+    });
 
-    const duration = 1200;
-    const start = performance.now();
-
-    function step(now: number) {
-      const progress = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
-  }, [active, target]);
-
-  return display;
-}
-
-function StatEntry({ item, active }: { item: StatItem; active: boolean }) {
-  const numeric = Number(item.value.replace(/[^0-9]/g, "")) || 0;
-  const count = useCountUp(numeric, active);
+    return () => mm.revert();
+  }, [numeric, item.prefix, item.suffix]);
 
   return (
     <div className="flex flex-col gap-1">
-      <span className="mono-label text-sm text-[var(--text-0)] sm:text-base">
+      <span
+        ref={valueRef}
+        className="mono-label text-sm text-[var(--text-0)] sm:text-base"
+      >
         {item.prefix ?? ""}
-        {count.toLocaleString()}
+        {numeric.toLocaleString()}
         {item.suffix ?? ""}
       </span>
       <span className="text-xs text-[var(--text-2)]">{item.label}</span>
@@ -59,32 +59,10 @@ function StatEntry({ item, active }: { item: StatItem; active: boolean }) {
 }
 
 export function StatBar({ items }: { items: StatItem[] }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setActive(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div
-      ref={ref}
-      className="mt-14 flex flex-wrap gap-x-8 gap-y-4 border-y border-[var(--border)] py-6"
-    >
+    <div className="mt-14 flex flex-wrap gap-x-8 gap-y-4 border-y border-[var(--border)] py-6">
       {items.map((item) => (
-        <StatEntry key={item.label} item={item} active={active} />
+        <StatEntry key={item.label} item={item} />
       ))}
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { getGsap } from "@/lib/gsap";
 
 export type TimelineEntry = {
   period: string;
@@ -8,53 +9,51 @@ export type TimelineEntry = {
 };
 
 /**
- * Vertical timeline with an accent path drawn down the left edge.
- * The path is scroll-scrubbed by the motion layer (GSAP ScrollTrigger);
- * without JS or under reduced-motion, the full line and all dots render
- * immediately so the timeline reads correctly either way.
+ * Vertical timeline with an accent path drawn down the left edge,
+ * scroll-scrubbed via GSAP ScrollTrigger. Dots pop as the draw passes
+ * them. Without JS or under reduced-motion, the full line and all dots
+ * render immediately so the timeline still reads correctly.
  */
 export function Timeline({ entries }: { entries: TimelineEntry[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
-  const [pathLength, setPathLength] = useState(0);
-  const [drawn, setDrawn] = useState(1);
   const [passedCount, setPassedCount] = useState(entries.length);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) return;
-
     const path = pathRef.current;
     const container = containerRef.current;
     if (!path || !container) return;
 
-    setPathLength(path.getTotalLength());
-    setDrawn(0);
-    setPassedCount(0);
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = `${length}`;
+    path.style.strokeDashoffset = "0";
 
-    function onScroll() {
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      const viewportH = window.innerHeight;
-      const total = rect.height + viewportH;
-      const progressed = Math.min(
-        1,
-        Math.max(0, (viewportH - rect.top) / total)
+    const gsap = getGsap();
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      setPassedCount(0);
+
+      gsap.fromTo(
+        path,
+        { strokeDashoffset: length },
+        {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 70%",
+            end: "bottom 60%",
+            scrub: 0.6,
+            onUpdate: (self) => {
+              setPassedCount(Math.round(self.progress * entries.length));
+            },
+          },
+        }
       );
-      setDrawn(progressed);
-      setPassedCount(Math.round(progressed * entries.length));
-    }
+    });
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    return () => mm.revert();
   }, [entries.length]);
 
   return (
@@ -77,10 +76,6 @@ export function Timeline({ entries }: { entries: TimelineEntry[] }) {
           fill="none"
           stroke="var(--accent)"
           strokeWidth="2"
-          strokeDasharray={pathLength || 1}
-          strokeDashoffset={
-            pathLength ? pathLength * (1 - drawn) : 0
-          }
         />
       </svg>
       <ol className="space-y-14">

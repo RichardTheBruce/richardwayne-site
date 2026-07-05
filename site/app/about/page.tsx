@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { CtaBand } from "@/components/cta-band";
 import { Timeline } from "@/components/timeline";
+import { DockRow } from "@/components/dock-row";
 
 export const metadata: Metadata = {
   title: "About",
@@ -163,12 +163,12 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-[var(--border)] py-12">
-        <div className="container-page flex flex-wrap items-center gap-x-8 gap-y-3">
-          {principles.map((principle) => (
-            <span key={principle} className="mono-label text-xs text-[var(--text-2)]">
-              {principle}
-            </span>
-          ))}
+        <div className="container-page">
+          <DockRow>
+            {principles.map((principle) => (
+              <span key={principle}>{principle}</span>
+            ))}
+          </DockRow>
         </div>
       </section>
 
