@@ -42,8 +42,8 @@ const moreBuilds = [
   {
     title: "The Lab",
     body: "A physics playground: 90,000-particle heroes, string fields, a Saturn that becomes your cursor.",
-    image: "/work/lab-saturn.png",
-    alt: "A physics playground with a particle field and an orbiting Saturn model",
+    image: "/work/lab-hero.png",
+    alt: "Glowing RichardTheBruce particle text with an orbiting Saturn model from the physics lab portfolio",
     href: "https://github.com/RichardTheBruce/portfolio",
     external: true,
   },

@@ -38,8 +38,8 @@ export default function WorkIndexPage() {
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-[var(--border)] bg-[var(--bg-1)]">
               <Image
-                src="/work/lab-saturn.png"
-                alt="A physics playground with a particle field and an orbiting Saturn model"
+                src="/work/lab-hero.png"
+                alt="Glowing RichardTheBruce particle text with an orbiting Saturn model from the physics lab portfolio"
                 fill
                 sizes="(min-width: 1024px) 600px, 100vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"

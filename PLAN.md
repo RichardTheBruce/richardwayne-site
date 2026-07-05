@@ -234,3 +234,5 @@ Keep everything else still. Restraint is the brand.
 2. Published research block on /writing is LIVE with Richard's two SSRN papers (consciousness framework, 19pp; The Unification Theory, 38pp). ID-to-title mapping is best-inference (SSRN blocks bots); swap the two url values if Richard corrects it.
 3. next.config images.deviceSizes capped at 1920 (fixes optimizer 404s on requests larger than source assets).
 4. X/Telegram footer links hidden until the accounts exist (empty strings in lib/site.ts).
+5. The Lab card image replaced: old lab-saturn.png was a dirty May dev capture (baked-in Next issue badge, MOVE YOUR MOUSE caption, mid-shatter truncated wall). New lab-hero.png is a clean 16:10 crop of the production walk capture (settled RichardTheBruce text + Saturn). Renamed to bust the optimizer cache.
+6. Next dev overlay issue fixed: data-scroll-behavior="smooth" added to the html element per Next 16 guidance.
