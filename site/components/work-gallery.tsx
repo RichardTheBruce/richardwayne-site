@@ -12,7 +12,32 @@ const SCROLL_FRAME_SOURCES = new Set([
 ]);
 
 function GalleryFrame({ image }: { image: WorkImage }) {
-  const isScrollFrame = SCROLL_FRAME_SOURCES.has(image.src);
+  const isScrollFrame = image.tall || SCROLL_FRAME_SOURCES.has(image.src);
+
+  if (image.video) {
+    return (
+      <figure className="overflow-hidden rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--bg-2)]">
+        <div className="relative aspect-[16/10] w-full">
+          <video
+            className="absolute inset-0 h-full w-full object-cover object-top"
+            poster={image.src}
+            src={image.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={image.alt}
+          />
+        </div>
+        {image.label ? (
+          <figcaption className="mono-label border-t border-[var(--border)] px-4 py-3 text-xs text-[var(--text-2)]">
+            {image.label}
+          </figcaption>
+        ) : null}
+      </figure>
+    );
+  }
 
   return (
     <figure className="overflow-hidden rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--bg-2)]">
@@ -28,15 +53,17 @@ function GalleryFrame({ image }: { image: WorkImage }) {
           />
         </div>
       ) : (
-        <div className="relative aspect-[16/10] w-full">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(min-width: 1024px) 900px, 100vw"
-            className="object-cover object-top"
-          />
-        </div>
+        // Documentary screenshots come in varied aspect ratios (portrait
+        // mobile screens, wide banners, square dashboards). Render each at
+        // its natural aspect so nothing gets cropped or distorted.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={image.src}
+          alt={image.alt}
+          loading="lazy"
+          decoding="async"
+          className="block h-auto w-full"
+        />
       )}
       {image.label ? (
         <figcaption className="mono-label border-t border-[var(--border)] px-4 py-3 text-xs text-[var(--text-2)]">

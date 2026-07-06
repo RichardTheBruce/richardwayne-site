@@ -1,8 +1,10 @@
 const rows = [
-  { label: "chains in production", value: "7", accent: true },
-  { label: "launchpad shipped", value: "$300K" },
-  { label: "bridge matrix", value: "23 chains" },
-  { label: "commits since 2024", value: "2,300+" },
+  { label: "years building", value: "10+" },
+  { label: "years in production", value: "7" },
+  { label: "raised across 2 projects", value: "$750K" },
+  { label: "2019 revenue, sole proprietor", value: "$20M" },
+  { label: "chains in production", value: "23", accent: true },
+  { label: "commits in 2026", value: "1,700+" },
   { label: "published research", value: "2 papers, SSRN" },
 ];
 

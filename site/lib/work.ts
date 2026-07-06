@@ -2,6 +2,11 @@ export type WorkImage = {
   src: string;
   alt: string;
   label?: string;
+  // When set, this gallery item renders as a looping muted video with `src`
+  // used as the poster frame and `video` as the source file.
+  video?: string;
+  // Force the tall internal-scroll frame for very tall full-page captures.
+  tall?: boolean;
 };
 
 export type CaseStudy = {
@@ -71,8 +76,40 @@ export const caseStudies: CaseStudy[] = [
       "About $300K invested, 810 commits, 5,000 users at launch, live across 7 EVM chains.",
     gallery: [
       {
-        src: "/work/memetropolis-landing.png",
-        alt: "Memetropolis full omnichain launchpad landing page scroll capture",
+        src: "/work/meme-dashboard.jpg",
+        alt: "Memetropolis live launchpad dashboard with trader profile, portal funnels, and a recent-gainers table",
+        label: "The live dashboard",
+      },
+      {
+        src: "/work/meme-launchpad-full.jpg",
+        alt: "Full Memetropolis token launch page: trader cards, wireframe launch art, bonding curve, and candlestick chart",
+        label: "A token launch page",
+      },
+      {
+        src: "/work/meme-trade-ui-poster.jpg",
+        video: "/work/meme-trade-ui.mp4",
+        alt: "The Memetropolis trade panel in motion: buy, sell, chain, whale sell, swap and bridge",
+        label: "The trade panel, in motion",
+      },
+      {
+        src: "/work/meme-launch-card.jpg",
+        alt: "Memetropolis launch card with live trader feed and wireframe mountain launch artwork",
+        label: "Launch card and live feed",
+      },
+      {
+        src: "/work/meme-portal-3d.jpg",
+        alt: "Cinematic 3D portal environment art rendered for the Memetropolis interface",
+        label: "3D portal environment art",
+      },
+      {
+        src: "/work/meme-portal-animation.jpg",
+        alt: "The Memetropolis portal animation system showing ranked portals and container layout",
+        label: "The portal animation system",
+      },
+      {
+        src: "/work/meme-mobile.jpg",
+        alt: "Memetropolis mobile app top-projects screen with portal funnels and token orbs",
+        label: "Mobile: top projects",
       },
     ],
   },
@@ -98,6 +135,17 @@ export const caseStudies: CaseStudy[] = [
       {
         src: "/work/omnix-landing.png",
         alt: "Omni-X omnichain NFT marketplace landing page",
+        label: "The marketplace",
+      },
+      {
+        src: "/work/onft-wizard-1.jpg",
+        alt: "Original ONFT character art: a blue star-hatted wizard mascot illustrated for the Omni-X era",
+        label: "ONFT character art I illustrated",
+      },
+      {
+        src: "/work/onft-wizard-2.jpg",
+        alt: "Alternate ONFT wizard mascot illustration on a black background",
+        label: "Alternate mascot",
       },
     ],
   },

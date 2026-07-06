@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/lib/nav";
+import { ChannelIcons } from "@/components/channel-icons";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -44,7 +45,8 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-2 md:flex">
+            <ChannelIcons />
             <Link href="/contact" className="btn btn-primary">
               Book a build call
             </Link>
@@ -107,6 +109,9 @@ export function SiteHeader() {
             >
               Book a build call
             </Link>
+            <div className="mt-6 flex justify-center">
+              <ChannelIcons />
+            </div>
           </nav>
         </div>
       ) : null}

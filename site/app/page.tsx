@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { WorkCard } from "@/components/work-card";
 import { CtaBand } from "@/components/cta-band";
 import { HeroCanvas } from "@/components/hero-canvas";
@@ -219,22 +220,25 @@ export default function Home() {
       <section className="border-b border-[var(--border)] bg-[var(--bg-1)] py-24 sm:py-32">
         <div className="container-page grid gap-10 md:grid-cols-[220px_1fr] md:items-start">
           <ScrollReveal>
-            <div
-              className="flex h-40 w-40 items-center justify-center rounded-[var(--radius-card)] border border-[var(--border-bright)] bg-[var(--bg-2)] font-display text-3xl font-semibold text-[var(--text-0)]"
-              aria-hidden="true"
-            >
-              RW
-            </div>
+            <Image
+              src="/richard.jpg"
+              alt="Richard Wayne"
+              width={160}
+              height={160}
+              className="h-40 w-40 rounded-[var(--radius-card)] border border-[var(--border-bright)] object-cover"
+            />
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="max-w-2xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
-              I built my first application at 14. Ten years of
-              founding-engineer work later I have shipped a $300K
-              cross-chain launchpad, co-founded the first omnichain NFT
-              platform, advised a Rutgers electrical engineering capstone
-              team, and graduated summa cum laude from Rutgers. I work daily
-              with a personal AI neural net I designed, which is why I ship
-              at the pace of a small team.
+              I built my first application at 14. Over ten years of
+              founding-engineer work later, seven of them running production
+              systems, I have raised $750K across two projects, shipped a
+              $300K cross-chain launchpad, co-founded the first omnichain NFT
+              platform, and run a sole-proprietor venture to $20M in revenue
+              in 2019. I graduated summa cum laude from Rutgers and advised
+              its electrical engineering capstone team. I work daily with a
+              personal AI neural net I designed, which is why I ship at the
+              pace of a small team.
             </p>
             <Link
               href="/about"

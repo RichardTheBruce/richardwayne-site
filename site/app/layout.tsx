@@ -66,6 +66,7 @@ export default function RootLayout({
               name: site.name,
               url: site.url,
               jobTitle: "Founding Engineer",
+              image: `${site.url}/richard.jpg`,
               email: site.email,
               alumniOf: {
                 "@type": "CollegeOrUniversity",

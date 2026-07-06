@@ -13,8 +13,12 @@ export const metadata: Metadata = {
 const timelineEntries = [
   { period: "Age 14", body: "Built my first application. Never stopped." },
   {
-    period: "2016 to 2022",
+    period: "2016 to 2019",
     body: "A decade of building begins in earnest: full-stack product work, systems, and the habit of shipping alone.",
+  },
+  {
+    period: "2019",
+    body: "Ran a sole-proprietor venture to $20M in revenue. The year I learned that building and selling are the same discipline.",
   },
   {
     period: "2022",
@@ -22,11 +26,42 @@ const timelineEntries = [
   },
   {
     period: "2024 to 2025",
-    body: "Founded Memetropolis: the first OFT launchpad on LayerZero, 7 chains, about $300K invested, 810 commits.",
+    body: "Founded Memetropolis: the first OFT launchpad on LayerZero, 7 chains, about $300K invested, 810 commits. Seven years of production systems behind me by now, and $750K raised across two projects.",
   },
   {
-    period: "2025 to now",
-    body: "Founding AFI, the agentic bank. Also shipping client builds, including a federal PPE supplier's lead engine.",
+    period: "2026",
+    body: "Founding AFI, the agentic bank, on 1,700+ commits this year alone. Also shipping client builds, including a federal PPE supplier's lead engine.",
+  },
+];
+
+const languages = [
+  "TypeScript",
+  "JavaScript",
+  "Python",
+  "Solidity",
+  "Rust",
+  "C++",
+  "C",
+  "Go",
+  "Java",
+  "SQL",
+  "Bash",
+  "HTML",
+  "CSS",
+];
+
+const craft = [
+  {
+    title: "Design systems from scratch",
+    body: "Tokens, type scale, spacing, motion language, and a component library before a single page ships. AFI runs on an Obsidian and Graphite palette with one accent; the PPE rebuild carried its own design ledger. I do not vibe-code color. Every visual decision cites a reference.",
+  },
+  {
+    title: "Motion and interface",
+    body: "GSAP scroll choreography, SVG path tracing, WebGL and canvas particle systems, magnetic buttons, dock rows. Interfaces that feel alive without getting in the way of the work.",
+  },
+  {
+    title: "The full stack under it",
+    body: "Contracts, backend, database, frontend, deploy, and the operational discipline to keep it alive. I own design and engineering as one loop, which is why the seams do not show.",
   },
 ];
 
@@ -63,21 +98,39 @@ const moreBuilds = [
     href: "https://github.com/RichardTheBruce/me-md",
     external: true,
   },
+  {
+    title: "3D game character",
+    body: "A hooded, gas-masked figure modeled and textured from scratch, glowing rune detailing. Design and 3D work is part of the same craft, not a separate hire.",
+    image: "/work/game-character.png",
+    alt: "A 3D-modeled hooded game character wearing a gas mask and cyberpunk armor with glowing blue runes",
+    href: null,
+    external: false,
+  },
 ];
 
 export default function AboutPage() {
   return (
     <>
       <section className="border-b border-[var(--border)] py-20 sm:py-28">
-        <div className="container-page">
-          <h1 className="font-display max-w-3xl text-[clamp(2.2rem,5vw,3.4rem)] font-semibold tracking-tight text-[var(--text-0)]">
-            About
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
-            I am Richard Wayne, a founder-engineer. I build autonomous
-            agents that move real money and the cross-chain infrastructure
-            underneath them that survives production.
-          </p>
+        <div className="container-page flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 className="font-display max-w-3xl text-[clamp(2.2rem,5vw,3.4rem)] font-semibold tracking-tight text-[var(--text-0)]">
+              About
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
+              I am Richard Wayne, a founder-engineer. I build autonomous
+              agents that move real money and the cross-chain infrastructure
+              underneath them that survives production.
+            </p>
+          </div>
+          <Image
+            src="/richard.jpg"
+            alt="Richard Wayne"
+            width={208}
+            height={208}
+            priority
+            className="h-44 w-44 shrink-0 rounded-[var(--radius-card)] border border-[var(--border-bright)] object-cover sm:h-52 sm:w-52"
+          />
         </div>
       </section>
 
@@ -91,16 +144,118 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-[var(--border)] bg-[var(--bg-1)] py-20 sm:py-28">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
+          <div>
+            <h2 className="font-display max-w-2xl text-[clamp(1.8rem,3.5vw,2.6rem)] font-semibold tracking-tight text-[var(--text-0)]">
+              How I ship so fast
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
+              I designed and operate a personal AI neural net: a persistent
+              memory, agent roster, and decision-ledger system that pairs
+              with me on every build. Most consultants bill you hours to
+              remember your codebase. Mine compounds. The graph is the
+              actual memory, thousands of linked notes the agents read
+              before they write a line.
+            </p>
+          </div>
+          <figure className="overflow-hidden rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--bg-2)]">
+            <Image
+              src="/work/neural-net-graph.jpg"
+              alt="The Obsidian graph view of Richard Wayne's personal AI neural net, a dense web of linked memory notes around a central Database node"
+              width={703}
+              height={761}
+              className="h-auto w-full"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section className="border-b border-[var(--border)] py-20 sm:py-28">
         <div className="container-page">
           <h2 className="font-display max-w-2xl text-[clamp(1.8rem,3.5vw,2.6rem)] font-semibold tracking-tight text-[var(--text-0)]">
-            How I ship so fast
+            Languages and craft
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
-            I designed and operate a personal AI neural net: a persistent
-            memory, agent roster, and decision-ledger system that pairs
-            with me on every build. Most consultants bill you hours to
-            remember your codebase. Mine compounds.
+            Ten years of shipping means a wide surface. The languages I have
+            written production code in, and the design craft I bring to the
+            same builds. I design the system and I write the code, so the
+            interface and the engine are never at war.
           </p>
+          <div className="mt-8 flex flex-wrap gap-2.5">
+            {languages.map((lang) => (
+              <span
+                key={lang}
+                className="rounded-full border border-[var(--border-bright)] bg-[var(--bg-2)] px-3.5 py-1.5 font-mono text-[13px] text-[var(--text-1)]"
+              >
+                {lang}
+              </span>
+            ))}
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {craft.map((item) => (
+              <div key={item.title} className="card-surface h-full p-6">
+                <h3 className="font-display text-lg font-semibold text-[var(--text-0)]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--text-1)]">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-[var(--text-2)]">
+            Design pipeline built on a taste-first anti-generic standard.
+            Reference:{" "}
+            <a
+              href="https://www.tasteskill.dev/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-[var(--accent)] underline underline-offset-4"
+            >
+              tasteskill.dev
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section className="border-b border-[var(--border)] bg-[var(--bg-1)] py-20 sm:py-28">
+        <div className="container-page">
+          <h2 className="font-display max-w-2xl text-[clamp(1.8rem,3.5vw,2.6rem)] font-semibold tracking-tight text-[var(--text-0)]">
+            Technical documentation and DevRel
+          </h2>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
+            I ship the docs, not just the code. Spec-first APIs with an
+            interactive reference a developer can actually call, clear
+            guides, and the operational runbooks a team inherits when I
+            hand off. Good documentation is the difference between a system
+            that survives me leaving and one that does not.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-2.5">
+            {[
+              "OpenAPI spec-first",
+              "Scalar interactive reference",
+              "Try-it API console",
+              "Runbooks and handoff docs",
+              "Architecture decision records",
+            ].map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-[var(--border-bright)] bg-[var(--bg-2)] px-3.5 py-1.5 font-mono text-[13px] text-[var(--text-1)]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+          <a
+            href="https://welcoming-dazzle-7q822.apidocumentation.com/reference"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-8 inline-flex items-center gap-2 text-sm text-[var(--accent)] underline underline-offset-4"
+          >
+            See a live API reference I shipped
+            <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </section>
 
