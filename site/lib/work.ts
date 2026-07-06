@@ -107,6 +107,12 @@ export const caseStudies: CaseStudy[] = [
         label: "The portal animation system",
       },
       {
+        src: "/work/brand-motion-poster.jpg",
+        video: "/work/brand-motion.mp4",
+        alt: "Memetropolis brand motion piece: a wireframe low-poly world in magenta and cyan with fan blades and orbiting spheres",
+        label: "Brand world, in motion",
+      },
+      {
         src: "/work/meme-mobile.jpg",
         alt: "Memetropolis mobile app top-projects screen with portal funnels and token orbs",
         label: "Mobile: top projects",
