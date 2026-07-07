@@ -33,8 +33,8 @@ export const caseStudies: CaseStudy[] = [
       "An agentic bank where you talk to your Visa card and a bonded AI agent moves your money. Nothing counts as done without a confirmed on-chain transaction hash, so the agent cannot lie about what it did.",
     chips: ["AI agents", "LayerZero V2", "Circle CCTP", "Visa rails", "PostgreSQL"],
     cardImage: {
-      src: "/work/afi-card.png",
-      alt: "AFI dark agentic bank card art",
+      src: "/work/afi-agent-cards-chat.png",
+      alt: "AFI Agent Cards dashboard showing the physics card, chat window with a freeze-my-card command, and Card Controls panel",
     },
     problem:
       "Everyone fears the same thing about AI agents: an agent that says it did something and did not do it. Handing one real money makes that fear existential.",
@@ -46,12 +46,34 @@ export const caseStudies: CaseStudy[] = [
       "In production on PM2 and a VPS, with risky on-chain paths shipping observe-only for their first 24 hours.",
     gallery: [
       {
-        src: "/work/afi-card.png",
-        alt: "AFI dark agentic bank card art",
+        src: "/work/afi-agent-cards-chat.png",
+        alt: "AFI Agent Cards dashboard with the physics Visa card, live chat window showing a freeze-my-card command, balance stats, and Card Controls panel",
+        label: "Agent Cards and chat window",
       },
       {
-        src: "/work/afi-agentic-card.png",
-        alt: "AFI agentic card interface showing agent-controlled payments",
+        src: "/work/afi-agent-cards-controls.png",
+        alt: "AFI Agent Cards view showing Card Controls panel with card number, valid thru, CVV, and Freeze Card toggle",
+        label: "Agent card controls",
+      },
+      {
+        src: "/work/afi-agent-cards-chains.png",
+        alt: "AFI Reload Card panel showing the 23-chain settlement picker including Base, Ethereum, Arbitrum, Optimism, Avalanche, and more",
+        label: "23-chain reload picker",
+      },
+      {
+        src: "/work/afi-vault.png",
+        alt: "AFI Vault screen showing all four money surfaces (Vault, Pay Card, Agent, Wallet), per-chain holdings, and EVM and Solana deposit addresses with Circle CCTP v2 routing",
+        label: "Vault",
+      },
+      {
+        src: "/work/afi-mycard.png",
+        alt: "AFI My Card screen showing the dark Visa pay card with balance revealed and Card Controls side panel open",
+        label: "My Card",
+      },
+      {
+        src: "/work/afi-wallet.png",
+        alt: "AFI My Wallet screen showing the wallet setup state with Connect wallet and Create wallet options on a dark background",
+        label: "My Wallet",
       },
     ],
   },
@@ -105,12 +127,6 @@ export const caseStudies: CaseStudy[] = [
         src: "/work/meme-portal-animation.jpg",
         alt: "The Memetropolis portal animation system showing ranked portals and container layout",
         label: "The portal animation system",
-      },
-      {
-        src: "/work/brand-motion-poster.jpg",
-        video: "/work/brand-motion.mp4",
-        alt: "Memetropolis brand motion piece: a wireframe low-poly world in magenta and cyan with fan blades and orbiting spheres",
-        label: "Brand world, in motion",
       },
       {
         src: "/work/meme-mobile.jpg",

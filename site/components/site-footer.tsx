@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getVisibleChannels, site } from "@/lib/site";
 import { ChannelIcons } from "@/components/channel-icons";
+import { CopyEmailLink } from "@/components/copy-email";
 
 const workLinks = [
   { label: "AFI", href: "/work/afi" },
@@ -24,12 +25,7 @@ export function SiteFooter() {
             Founding engineer for AI agents, cross-chain infrastructure, and
             full-stack builds that hold at 100K users.
           </p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-4 inline-block text-sm text-[var(--accent)] underline underline-offset-4"
-          >
-            {site.email}
-          </a>
+          <CopyEmailLink className="mt-4 inline-block text-sm text-[var(--accent)] underline underline-offset-4" />
           <ChannelIcons className="mt-3 -ml-1.5" />
         </div>
 
@@ -53,12 +49,9 @@ export function SiteFooter() {
           <p className="mono-label text-xs text-[var(--text-2)]">Channels</p>
           <ul className="mt-4 space-y-3">
             <li>
-              <a
-                href={`mailto:${site.email}`}
-                className="text-sm text-[var(--text-1)] transition-colors hover:text-[var(--text-0)]"
-              >
+              <CopyEmailLink className="text-sm text-[var(--text-1)] transition-colors hover:text-[var(--text-0)]">
                 Email
-              </a>
+              </CopyEmailLink>
             </li>
             {channels.map((channel) => (
               <li key={channel.href}>

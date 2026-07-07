@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Writing",
   description:
     "Build logs from Richard Wayne: the agent trust contract, and the concurrency bug that strands funds at scale.",
+  alternates: {
+    canonical: "https://richardthebruce.com/writing",
+  },
 };
 
 export default function WritingIndexPage() {
@@ -25,28 +28,49 @@ export default function WritingIndexPage() {
               Published research
             </h2>
             <div className="mt-5 grid gap-4">
-              {research.map((paper) => (
-                <a
-                  key={paper.url}
-                  href={paper.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="card-surface block p-6"
-                >
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-                    <h3 className="font-display text-lg font-semibold text-[var(--text-0)]">
-                      {paper.title}
-                    </h3>
-                    <span className="mono-label shrink-0 text-xs text-[var(--text-2)]">
-                      {paper.venue} &middot; {paper.year} &middot; {paper.pages}{" "}
-                      pages
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--text-1)]">
-                    {paper.oneLiner}
-                  </p>
-                </a>
-              ))}
+              {research.map((paper) =>
+                paper.localSlug ? (
+                  <Link
+                    key={paper.url}
+                    href={`/writing/${paper.localSlug}`}
+                    className="card-surface block p-6"
+                  >
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                      <h3 className="font-display text-lg font-semibold text-[var(--text-0)]">
+                        {paper.title}
+                      </h3>
+                      <span className="mono-label shrink-0 text-xs text-[var(--text-2)]">
+                        {paper.venue} &middot; {paper.year} &middot;{" "}
+                        {paper.pages} pages
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-1)]">
+                      {paper.oneLiner}
+                    </p>
+                  </Link>
+                ) : (
+                  <a
+                    key={paper.url}
+                    href={paper.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="card-surface block p-6"
+                  >
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                      <h3 className="font-display text-lg font-semibold text-[var(--text-0)]">
+                        {paper.title}
+                      </h3>
+                      <span className="mono-label shrink-0 text-xs text-[var(--text-2)]">
+                        {paper.venue} &middot; {paper.year} &middot;{" "}
+                        {paper.pages} pages
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-1)]">
+                      {paper.oneLiner}
+                    </p>
+                  </a>
+                )
+              )}
             </div>
           </div>
         ) : null}

@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { CopyEmailIcon } from "@/components/copy-email";
 
 type IconLink = {
   label: string;
@@ -27,37 +28,43 @@ const email = (
   />
 );
 
-function iconsFor(): IconLink[] {
-  const links: IconLink[] = [
-    { label: "Email Richard", href: `mailto:${site.email}`, path: email },
+const iconLinkClass =
+  "flex h-9 w-9 items-center justify-center rounded-md text-[var(--text-2)] transition-colors hover:bg-[var(--bg-2)] hover:text-[var(--text-0)]";
+
+function externalLinks(): IconLink[] {
+  return [
     { label: "GitHub", href: site.github, path: github },
     { label: "LinkedIn", href: site.linkedin, path: linkedin },
   ];
-  return links;
 }
 
 export function ChannelIcons({ className = "" }: { className?: string }) {
-  const links = iconsFor();
+  const links = externalLinks();
   return (
     <div className={`flex items-center gap-1 ${className}`}>
-      {links.map((link) => {
-        const external = link.href.startsWith("http");
-        return (
-          <a
-            key={link.label}
-            href={link.href}
-            aria-label={link.label}
-            title={link.label}
-            target={external ? "_blank" : undefined}
-            rel={external ? "noreferrer noopener" : undefined}
-            className="flex h-9 w-9 items-center justify-center rounded-md text-[var(--text-2)] transition-colors hover:bg-[var(--bg-2)] hover:text-[var(--text-0)]"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-              {link.path}
-            </svg>
-          </a>
-        );
-      })}
+      {/* Email icon: copies address + shows toast on click */}
+      <CopyEmailIcon label="Email Richard" className={iconLinkClass}>
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          {email}
+        </svg>
+      </CopyEmailIcon>
+
+      {/* External links */}
+      {links.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          aria-label={link.label}
+          title={link.label}
+          target="_blank"
+          rel="noreferrer noopener"
+          className={iconLinkClass}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            {link.path}
+          </svg>
+        </a>
+      ))}
     </div>
   );
 }

@@ -1,14 +1,29 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { WorkCard } from "@/components/work-card";
 import { CtaBand } from "@/components/cta-band";
-import { HeroCanvas } from "@/components/hero-canvas";
+// Stable graded-video hero — used for this commit.
+import { HeroVideo } from "@/components/hero-video/HeroVideo";
+// WIP: interactive cone-tensor 3D hero lives in components/hero-tensor-3d/.
+// Swap the render below back to <HeroTensor3D /> when it is ready to ship.
+// import { HeroTensor3D } from "@/components/hero-tensor-3d/HeroTensor3D";
 import { HeroPathTrace } from "@/components/hero-path-trace";
 import { ProofLedger } from "@/components/proof-ledger";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ProfessionalServiceJsonLd } from "@/components/professional-service-jsonld";
 import { MagneticLink } from "@/components/magnetic-link";
 import { caseStudies } from "@/lib/work";
+
+export const metadata: Metadata = {
+  title:
+    "Richard Wayne · Founding Engineer for AI Agents, Cross-Chain, and Full-Stack Builds",
+  description:
+    "Founding engineer for hire. I build AI agent systems that execute under proof, cross-chain infrastructure on LayerZero and Circle CCTP, and full-stack products that hold at 100K users. Coding since 14, shipping for 10 years.",
+  alternates: {
+    canonical: "https://richardthebruce.com",
+  },
+};
 
 const offers = [
   {
@@ -83,8 +98,11 @@ export default function Home() {
     <>
       <ProfessionalServiceJsonLd />
       <section className="relative overflow-hidden border-b border-[var(--border)]">
-        <HeroCanvas />
-        <div className="container-page relative z-10 grid min-h-[88vh] items-center gap-12 py-24 lg:grid-cols-[7fr_5fr] lg:gap-16">
+        {/* Stable graded-video hero. WIP interactive tensor hero is in
+            components/hero-tensor-3d/ — swap <HeroVideo /> for
+            <HeroTensor3D /> (import above) when it is ready. */}
+        <HeroVideo />
+        <div className="container-page relative z-10 grid min-h-[88vh] items-center gap-12 py-24 lg:grid-cols-[7fr_5fr] lg:gap-16 select-none">
           <div>
             <p className="mono-label text-xs text-[var(--text-2)] sm:text-sm">
               Founding engineer · AI agents · Cross-chain · Full stack

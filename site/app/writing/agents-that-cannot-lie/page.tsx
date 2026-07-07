@@ -7,6 +7,9 @@ const post = getPost("agents-that-cannot-lie")!;
 export const metadata: Metadata = {
   title: post.title,
   description: post.dek,
+  alternates: {
+    canonical: "https://richardthebruce.com/writing/agents-that-cannot-lie",
+  },
 };
 
 export default function AgentsThatCannotLiePost() {

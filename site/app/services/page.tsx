@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Three ways to engage a founding engineer: AI agent systems, cross-chain and payments infrastructure, and founding-engineer product builds. All of them end with working software in production.",
+  alternates: {
+    canonical: "https://richardthebruce.com/services",
+  },
 };
 
 const offers = [

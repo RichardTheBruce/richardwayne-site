@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { caseStudies } from "@/lib/work";
-import { posts } from "@/lib/posts";
+import { posts, research } from "@/lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -38,6 +38,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.5,
     });
+  }
+
+  for (const paper of research) {
+    if (paper.localSlug) {
+      entries.push({
+        url: `${site.url}/writing/${paper.localSlug}`,
+        lastModified: new Date(`${paper.year}-01-01`),
+        changeFrequency: "yearly",
+        priority: 0.8,
+      });
+    }
   }
 
   return entries;

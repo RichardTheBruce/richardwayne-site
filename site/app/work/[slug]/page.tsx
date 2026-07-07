@@ -32,6 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: study.title,
     description: caseStudyDescriptions[slug] ?? study.summary,
+    alternates: {
+      canonical: `https://richardthebruce.com/work/${slug}`,
+    },
   };
 }
 

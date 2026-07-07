@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Richard Wayne: founder-engineer since age 14. Co-founded the first omnichain NFT platform, founded a $300K cross-chain launchpad, and now builds the agentic bank AFI.",
+  alternates: {
+    canonical: "https://richardthebruce.com/about",
+  },
 };
 
 const timelineEntries = [
@@ -34,20 +37,39 @@ const timelineEntries = [
   },
 ];
 
-const languages = [
-  "TypeScript",
-  "JavaScript",
-  "Python",
-  "Solidity",
-  "Rust",
-  "C++",
-  "C",
-  "Go",
-  "Java",
-  "SQL",
-  "Bash",
-  "HTML",
-  "CSS",
+const languages: { name: string; years: number }[] = [
+  { name: "HTML", years: 17 },
+  { name: "CSS", years: 17 },
+  { name: "JavaScript", years: 15 },
+  { name: "Java", years: 12 },
+  { name: "C", years: 12 },
+  { name: "C++", years: 12 },
+  { name: "Python", years: 11 },
+  { name: "SQL", years: 9 },
+  { name: "Bash", years: 9 },
+  { name: "TypeScript", years: 7 },
+  { name: "Go", years: 5 },
+  { name: "Solidity", years: 5 },
+  { name: "Rust", years: 4 },
+];
+
+const tools = [
+  "Node.js",
+  "Docker",
+  "Supabase",
+  "PostgreSQL",
+  "Next.js",
+  "React",
+  "Tailwind",
+  "Vercel",
+  "Git",
+  "GSAP",
+  "WebGL",
+  "Three.js",
+  "ffmpeg",
+  "GitHub Actions",
+  "Figma API",
+  "MCP",
 ];
 
 const craft = [
@@ -182,13 +204,91 @@ export default function AboutPage() {
             same builds. I design the system and I write the code, so the
             interface and the engine are never at war.
           </p>
-          <div className="mt-8 flex flex-wrap gap-2.5">
-            {languages.map((lang) => (
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-widest text-[var(--text-2)]">
+            Languages
+          </p>
+          {/* Language pills with hover-year tooltip */}
+          <style>{`
+            .lang-pill {
+              position: relative;
+              display: inline-flex;
+              align-items: center;
+              gap: 0.35em;
+            }
+            .lang-pill .lang-tooltip {
+              position: absolute;
+              bottom: calc(100% + 6px);
+              left: 50%;
+              transform: translateX(-50%);
+              background: var(--bg-2);
+              border: 1px solid var(--border-bright);
+              color: #0d90ff;
+              font-size: 11px;
+              font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+              white-space: nowrap;
+              padding: 3px 8px;
+              border-radius: 6px;
+              pointer-events: none;
+              opacity: 0;
+              transition: opacity 0.15s ease;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            }
+            .lang-pill .lang-tooltip::after {
+              content: "";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              border: 4px solid transparent;
+              border-top-color: var(--border-bright);
+            }
+            @media (hover: hover) and (pointer: fine) {
+              .lang-pill:hover .lang-tooltip {
+                opacity: 1;
+              }
+              .lang-pill .lang-years-inline {
+                display: none;
+              }
+            }
+            @media (hover: none), (pointer: coarse) {
+              .lang-pill .lang-tooltip {
+                display: none;
+              }
+              .lang-years-inline {
+                color: var(--text-2);
+                font-size: 11px;
+              }
+            }
+          `}</style>
+          <div className="mt-3 flex flex-wrap gap-2.5">
+            {languages.map(({ name, years }) => (
               <span
-                key={lang}
+                key={name}
+                className="lang-pill rounded-full border border-[var(--border-bright)] bg-[var(--bg-2)] px-3.5 py-1.5 font-mono text-[13px] text-[var(--text-1)]"
+                aria-label={`${name}, ${years} years`}
+              >
+                {name}
+                <span className="lang-years-inline" aria-hidden="true">
+                  {years}y
+                </span>
+                <span className="lang-tooltip" aria-hidden="true">
+                  {years} years
+                </span>
+              </span>
+            ))}
+          </div>
+
+          {/* Tools and platforms pills */}
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-widest text-[var(--text-2)]">
+            Tools and platforms
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2.5">
+            {tools.map((tool) => (
+              <span
+                key={tool}
                 className="rounded-full border border-[var(--border-bright)] bg-[var(--bg-2)] px-3.5 py-1.5 font-mono text-[13px] text-[var(--text-1)]"
               >
-                {lang}
+                {tool}
               </span>
             ))}
           </div>

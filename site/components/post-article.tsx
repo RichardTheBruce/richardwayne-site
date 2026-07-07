@@ -36,10 +36,10 @@ export function PostArticle({
           <p className="text-sm text-[var(--text-1)]">
             Building something in this space?{" "}
             <a
-              href="mailto:richardthebrucewayne@gmail.com"
+              href="mailto:Richard@richardthebruce.com"
               className="text-[var(--accent)] underline underline-offset-4"
             >
-              richardthebrucewayne@gmail.com
+              Richard@richardthebruce.com
             </a>{" "}
             or{" "}
             <Link

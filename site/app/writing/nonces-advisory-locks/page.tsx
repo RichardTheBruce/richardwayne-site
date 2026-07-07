@@ -7,6 +7,9 @@ const post = getPost("nonces-advisory-locks")!;
 export const metadata: Metadata = {
   title: post.title,
   description: post.dek,
+  alternates: {
+    canonical: "https://richardthebruce.com/writing/nonces-advisory-locks",
+  },
 };
 
 export default function NoncesAdvisoryLocksPost() {

@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Case studies from Richard Wayne: an agentic bank, a $300K cross-chain launchpad, the first omnichain NFT platform, a federal PPE supplier rebuild, and a crypto-education app.",
+  alternates: {
+    canonical: "https://richardthebruce.com/work",
+  },
 };
 
 export default function WorkIndexPage() {

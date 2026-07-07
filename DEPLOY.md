@@ -25,9 +25,10 @@ If Deployment Protection shows on the new project anyway: Vercel dashboard → p
 
 | Var | Value | Purpose |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | `https://richardthebruce.dev` | metadataBase, sitemap, JSON-LD |
+| `NEXT_PUBLIC_SITE_URL` | `https://richardthebruce.com` | metadataBase, sitemap, JSON-LD |
+| `NEXT_PUBLIC_GSC_VERIFICATION` | token from Google Search Console HTML tag (content= value only) | Google Search Console ownership verification |
 | `RESEND_API_KEY` | from resend.com (RICHARD: free signup, 100 emails/day) | contact form delivery |
-| `CONTACT_FROM` | `leads@richardthebruce.dev` after domain verify in Resend, else leave unset | form sender |
+| `CONTACT_FROM` | `leads@richardthebruce.com` after domain verify in Resend, else leave unset | form sender |
 
 Redeploy after setting (`npx vercel --prod`).
 

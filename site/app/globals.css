@@ -156,39 +156,167 @@ body {
   border-color: var(--border);
 }
 
-/* Hero string field: canvas draws only on capable, motion-permitting
-   devices (see components/hero-canvas.tsx). The fallback below is a
-   cheap, non-animated repeating line pattern so touch / reduced-motion
-   visitors still get the intended visual texture without any JS cost. */
-.hero-static-fallback {
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(161, 161, 170, 0.14) 0px,
-    rgba(161, 161, 170, 0.14) 1px,
-    transparent 1px,
-    transparent 26px
-  );
-  opacity: 1;
+/* Hero video background.
+   The media layer plays Richard's real "That Is" render, color-graded to
+   obsidian + electric blue (public/hero/*). It is a PURE BACKGROUND: the layer
+   is pointer-events-none so it never captures a click or a scroll.
+   hero-video-layer: the clip / poster, obsidian base behind it so there is
+   never a blank flash before decode.
+   hero-video-scrim: sits above the media, darkening the left column where the
+   H1 + subhead + CTAs live and feathering the field into the page edges and
+   bottom border so hero copy keeps contrast over the brightest bloom. */
+.hero-video-layer {
+  /* Belt-and-suspenders: the media never wins a pointer interaction even if a
+     parent rule ever changes. */
+  pointer-events: none;
+  background-color: var(--bg-0);
 }
 
-@media (pointer: coarse) {
-  .motion-safe-canvas {
-    display: none;
+.hero-video-scrim {
+  pointer-events: none;
+  background:
+    /* Darken the left column so copy keeps contrast no matter how bright the
+       bloom pulses. */
+    linear-gradient(
+      to right,
+      rgba(6, 6, 7, 0.82) 0%,
+      rgba(6, 6, 7, 0.52) 28%,
+      rgba(6, 6, 7, 0.16) 48%,
+      rgba(6, 6, 7, 0.08) 64%
+    ),
+    /* Feather the field into the page edges. */
+    radial-gradient(
+      circle at 62% 52%,
+      transparent 0%,
+      transparent 46%,
+      rgba(6, 6, 7, 0.24) 78%,
+      rgba(6, 6, 7, 0.55) 100%
+    ),
+    /* Seat the clip against the top nav and the bottom border. */
+    linear-gradient(
+      to bottom,
+      rgba(6, 6, 7, 0.4) 0%,
+      transparent 22%,
+      transparent 62%,
+      rgba(6, 6, 7, 0.55) 90%,
+      var(--bg-0) 100%
+    );
+}
+
+/* Narrow viewports render the poster (no autoplay). Lift the left-column
+   darkening a touch and lean on a top-to-bottom scrim so the single-column copy
+   stays readable over the centered bloom. */
+@media (max-width: 899px) {
+  .hero-video-scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(6, 6, 7, 0.35) 0%,
+      rgba(6, 6, 7, 0.62) 55%,
+      var(--bg-0) 100%
+    );
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .motion-safe-canvas {
-    display: none;
+/* Interactive cone-tensor hero (HeroTensor3D).
+   Layering, from back to front:
+     .tensor-canvas-layer  z-0  pointer-events:auto  -> receives drag / zoom.
+     .tensor-scrim         over the canvas, pointer-events:none, for copy
+                           contrast. Because it is transparent to pointer
+                           events, it never blocks the drag underneath, and
+                           because the hero copy sits at z-10 above it the
+                           buttons + nav are never blocked either.
+   The left-column reads over the darkened side; the bloom lives centre-right
+   in the open area, which is exactly where drag / zoom land. */
+.tensor-canvas-layer {
+  /* The canvas itself must be interactive (drag + scoped wheel + pinch). This
+     is the ONE hero layer that is pointer-events:auto. It sits at z-0, BELOW
+     the hero copy (z-10), so it can never win a click meant for a button. */
+  pointer-events: auto;
+  background-color: var(--bg-0);
+  touch-action: pan-y; /* let vertical page scroll pass through on touch;
+                          OrbitControls consumes rotate/pinch it recognises. */
+}
+
+.tensor-scrim {
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to right,
+      rgba(6, 6, 7, 0.8) 0%,
+      rgba(6, 6, 7, 0.48) 28%,
+      rgba(6, 6, 7, 0.12) 50%,
+      rgba(6, 6, 7, 0.04) 66%
+    ),
+    radial-gradient(
+      circle at 64% 52%,
+      transparent 0%,
+      transparent 48%,
+      rgba(6, 6, 7, 0.2) 80%,
+      rgba(6, 6, 7, 0.5) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(6, 6, 7, 0.42) 0%,
+      transparent 24%,
+      transparent 64%,
+      rgba(6, 6, 7, 0.55) 92%,
+      var(--bg-0) 100%
+    );
+}
+
+@media (max-width: 899px) {
+  .tensor-scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(6, 6, 7, 0.35) 0%,
+      rgba(6, 6, 7, 0.62) 55%,
+      var(--bg-0) 100%
+    );
   }
 }
 
-@media not all and (pointer: coarse) {
-  @media not (prefers-reduced-motion: reduce) {
-    .hero-static-fallback {
-      display: none;
-    }
-  }
+/* Static poster fallback frame (reduced-motion / mobile / low-end / no-WebGL).
+   Reuses the graded hero poster so fallback visitors still see the bloom. */
+.tensor-static-frame {
+  pointer-events: none;
+  background-color: var(--bg-0);
+  background-image: url("/hero/hero-poster.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Subtle zoom controls, bottom-right of the hero. Present only on interactive
+   desktop as an always-available zoom affordance next to wheel + pinch, so zoom
+   works even if a browser blocks the scoped wheel path. */
+.tensor-zoom-controls {
+  position: absolute;
+  right: clamp(0.75rem, 2vw, 1.75rem);
+  bottom: clamp(0.75rem, 2vw, 1.75rem);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.tensor-zoom-btn {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-bright, rgba(255, 255, 255, 0.14));
+  background: rgba(10, 12, 16, 0.55);
+  backdrop-filter: blur(6px);
+  color: var(--text-1, #c8d2dd);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+  user-select: none;
+}
+.tensor-zoom-btn:hover {
+  border-color: #0d90ff;
+  color: #eaf6ff;
+  background: rgba(13, 144, 255, 0.14);
 }
 
 /* Work card accent border draw-on. Hidden until GSAP marks the card as

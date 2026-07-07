@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Tell Richard Wayne what you are building. Direct channels: email, LinkedIn, GitHub, and a contact form that replies within one business day.",
+  alternates: {
+    canonical: "https://richardthebruce.com/contact",
+  },
 };
 
 export default function ContactPage() {

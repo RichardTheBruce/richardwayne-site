@@ -1,7 +1,7 @@
 export const site = {
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://richardthebruce.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://richardthebruce.com",
   name: "Richard Wayne",
-  email: "richardthebrucewayne@gmail.com",
+  email: "Richard@richardthebruce.com",
   github: "https://github.com/RichardTheBruce",
   linkedin: "https://www.linkedin.com/in/richard-wayne-nuro",
   x: "", // set to https://x.com/RichardTheBruce once the handle is claimed
