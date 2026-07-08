@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { CalBookingButton } from "@/components/cal-booking-button";
 import { getVisibleChannels, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Book a call",
   description:
-    "Tell Richard Wayne what you are building. Direct channels: email, LinkedIn, GitHub, and a contact form that replies within one business day.",
+    "30-minute scope call with Richard Wayne: cross-chain infrastructure, LayerZero V2, Circle CCTP, on-chain agents. Book directly or send a note and get a reply within one business day.",
   alternates: {
     canonical: "https://richardthebruce.com/contact",
   },
@@ -19,11 +20,30 @@ export default function ContactPage() {
     <section className="py-20 sm:py-28">
       <div className="container-page">
         <h1 className="font-display max-w-2xl text-[clamp(2.2rem,5vw,3.4rem)] font-semibold tracking-tight text-[var(--text-0)]">
-          Tell me what needs to exist.
+          Book a call or send a note.
         </h1>
+        <p className="mt-4 max-w-xl text-base text-[var(--text-1)]">
+          30 minutes: you describe the problem, I tell you honestly whether I am the right builder and what I would do first.
+        </p>
+
+        {/* Primary: Cal.com booking */}
+        <div className="mt-10 card-surface p-8 sm:p-10 max-w-lg">
+          <p className="mono-label text-xs text-[var(--accent)]">Fastest path</p>
+          <h2 className="font-display mt-3 text-xl font-semibold text-[var(--text-0)]">
+            30-minute scope call
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--text-1)]">
+            Pick a time that works. No deck, no sales pitch: a technical conversation about your actual constraints.
+          </p>
+          <CalBookingButton className="btn btn-primary mt-6 w-full sm:w-auto">
+            Book a scope call
+          </CalBookingButton>
+        </div>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+          {/* Secondary: contact form */}
           <div className="relative">
+            <p className="mono-label mb-6 text-xs text-[var(--text-2)]">Or send a note</p>
             <ContactForm />
           </div>
 
@@ -56,12 +76,6 @@ export default function ContactPage() {
             <p className="mt-6 text-sm text-[var(--text-2)]">
               Prefer async? Email gets answered within one business day.
             </p>
-
-            {site.calendar ? (
-              <a href={site.calendar} className="btn btn-secondary mt-6 w-full">
-                Book a 30-minute scope call
-              </a>
-            ) : null}
           </div>
         </div>
       </div>

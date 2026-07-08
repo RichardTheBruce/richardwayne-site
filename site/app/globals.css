@@ -328,3 +328,47 @@ body {
 .work-card.is-revealed .reveal-border {
   opacity: 1;
 }
+
+/* Work gallery filmstrip.
+   The marquee itself (auto-scroll) is driven by GSAP on .filmstrip-track and
+   paused on strip hover from the component. These rules own the resting look
+   and the hover-enlarge, which are pure GPU transforms + opacity so they never
+   cost layout. Scoped under (hover:hover) and (pointer:fine) so touch devices,
+   which render the static grid, are never affected. */
+.filmstrip-track [data-tile] {
+  transform-origin: center center;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* While any tile is hovered, recede the others: dim + shrink a touch so the
+     focused snippet reads as lifted out of the strip. */
+  .filmstrip-track:hover [data-tile] {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+
+  /* The hovered (or keyboard-focused) tile lifts, scales up, and gains the
+     single #0D90FF accent ring + glow so its detail reads clearly. */
+  .filmstrip-track [data-tile]:hover,
+  .filmstrip-track [data-tile]:focus-visible {
+    opacity: 1;
+    transform: scale(1.14) translateY(-6px);
+    border-color: var(--accent);
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 18px 48px -12px rgba(13, 144, 255, 0.45),
+      0 24px 60px -20px rgba(0, 0, 0, 0.8);
+    z-index: 5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmstrip-track [data-tile] {
+    transition: none;
+  }
+}

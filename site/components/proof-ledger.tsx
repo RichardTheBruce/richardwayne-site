@@ -1,11 +1,11 @@
 const rows = [
-  { label: "years building", value: "10+" },
-  { label: "years in production", value: "7" },
+  { label: "chains in production", value: "23", accent: true },
+  { label: "OFT launchpad (LayerZero V2, 7 chains)", value: "~$300K" },
+  { label: "users at launchpad launch", value: "5,000" },
+  { label: "CCTP routes shipped incl. Solana-EVM", value: "yes" },
   { label: "raised across 2 projects", value: "$750K" },
   { label: "2019 revenue, sole proprietor", value: "$20M" },
-  { label: "chains in production", value: "23", accent: true },
-  { label: "commits in 2026", value: "1,700+" },
-  { label: "published research", value: "2 papers, SSRN" },
+  { label: "years in production", value: "7" },
 ];
 
 export function ProofLedger() {

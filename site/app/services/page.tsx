@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/cta-band";
 import { ProfessionalServiceJsonLd } from "@/components/professional-service-jsonld";
+import { CalBookingButton } from "@/components/cal-booking-button";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Three ways to engage a founding engineer: AI agent systems, cross-chain and payments infrastructure, and founding-engineer product builds. All of them end with working software in production.",
+    "Cross-chain infrastructure (LayerZero V2, Circle CCTP), on-chain agent systems, and full-stack founding-engineer builds. Production proof across 23 chains. Start with a 30-minute scope call.",
   alternates: {
     canonical: "https://richardthebruce.com/services",
   },
@@ -13,22 +14,46 @@ export const metadata: Metadata = {
 
 const offers = [
   {
-    title: "AI agent systems",
-    body: "Agents that execute real actions under proof, not chatbots that describe them. Execution layers, observability, kill-switches, and the trust architecture that makes autonomy safe to ship.",
+    title: "Cross-chain and DeFi infrastructure",
+    body: "LayerZero V2 OApp, OFT, and ONFT patterns that are battle-tested in production across 7 chains. Circle CCTP including the Solana-to-EVM route most teams stall on. Concurrency that never strands funds: Postgres advisory locks, per-address chain locks, fresh-fetched nonces on every transaction. Visa settlement rails against on-chain balances.",
     goodFit:
-      "Good fit if: you need an agent that acts, not chats. You are wiring LLMs to real actions (payments, ops, data) and cannot afford hallucinated execution. You want observability and kill-switches designed in, not bolted on.",
+      "Good fit if: you are going multi-chain and the bridges scare you. You need OFT or ONFT done right the first time, not after a botched first attempt. You are settling card or fiat rails against on-chain balances and cannot afford a stranded transaction.",
   },
   {
-    title: "Cross-chain and payments infrastructure",
-    body: "LayerZero V2, Circle CCTP, Visa settlement rails. OApp, OFT, and ONFT patterns that are battle-tested in production across 7 chains, not demoed once on testnet.",
+    title: "On-chain agent systems",
+    body: "Agents that execute real on-chain actions under proof, not chatbots that describe them. Execution layers with observability, kill-switches, and a trust contract so your users know the agent cannot lie about what it did. Every action verifiable against a confirmed transaction hash.",
     goodFit:
-      "Good fit if: you are going multi-chain and the bridges scare you. You need OFT or ONFT done right the first time. You are settling card or fiat rails against on-chain balances.",
+      "Good fit if: you need an agent that acts on-chain, not one that chats about it. You are wiring LLMs to real payments, swaps, or chain state and cannot afford hallucinated execution. You want kill-switches and observability designed in from day one.",
   },
   {
     title: "Founding-engineer product builds",
-    body: "The whole stack: contracts, backend, database, frontend, motion design, deploy, and the operational discipline to keep it alive. I have run this loop for 10 years.",
+    body: "Contracts, backend, database, frontend, deploy, and the operational discipline to keep it alive. I co-founded the first omnichain NFT platform (Omni-X), built the first OFT launchpad on LayerZero V2, and run a personal AI system that lets me ship at the pace of a small team. I have run this full-stack loop for 10 years.",
     goodFit:
-      "Good fit if: you have a funded idea and no engineering team. You need someone who ships the contract, the backend, the frontend, and the deploy. You want a builder who has been the founder too and thinks about your runway like it is his own.",
+      "Good fit if: you have a funded idea and no engineering team yet. You need someone who ships the contract, the backend, the frontend, and the deploy, without a hand-off gap between each. You want a builder who has been the founder too and thinks about your runway like it is his own.",
+  },
+];
+
+const engagementSteps = [
+  {
+    label: "01",
+    title: "Scope call",
+    duration: "30 min, free",
+    body: "You describe the problem. I tell you honestly whether I am the right builder, what the real risks are, and exactly what I would do first. No deck, no pitch.",
+    cta: true,
+  },
+  {
+    label: "02",
+    title: "Paid discovery sprint",
+    duration: "1-2 weeks, fixed fee",
+    body: "Architecture, build plan, and a working demo slice. For a cross-chain team this means: chain selection rationale, OFT/OApp contract skeleton, concurrency model, and the hardest integration proven on testnet. You own everything produced whether or not we continue.",
+    cta: false,
+  },
+  {
+    label: "03",
+    title: "The build",
+    duration: "Weekly ships",
+    body: "Working software you can click every week, not status decks. Every decision logged in the repo. For on-chain work: contracts verified on-chain, agent actions tied to transaction hashes, kill-switches on every live path.",
+    cta: false,
   },
 ];
 
@@ -57,12 +82,15 @@ export default function ServicesPage() {
       <ProfessionalServiceJsonLd />
       <section className="border-b border-[var(--border)] py-20 sm:py-28">
         <div className="container-page">
-          <h1 className="font-display max-w-3xl text-[clamp(2.2rem,5vw,3.4rem)] font-semibold tracking-tight text-[var(--text-0)]">
+          <p className="mono-label text-xs text-[var(--text-2)]">
+            LayerZero V2 · Circle CCTP · On-chain agents · 23 chains in production
+          </p>
+          <h1 className="font-display mt-4 max-w-3xl text-[clamp(2.2rem,5vw,3.4rem)] font-semibold tracking-tight text-[var(--text-0)]">
             Services
           </h1>
           <p className="mt-4 max-w-xl text-base text-[var(--text-1)]">
             Three ways to engage. All of them end with working software in
-            production.
+            production, every claim verifiable on-chain or in the repo.
           </p>
         </div>
       </section>
@@ -95,6 +123,37 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Engagement offer: scope call, discovery sprint, the build */}
+      <section className="border-b border-[var(--border)] py-20 sm:py-28">
+        <div className="container-page">
+          <h2 className="font-display max-w-2xl text-[clamp(1.8rem,3.5vw,2.6rem)] font-semibold tracking-tight text-[var(--text-0)]">
+            How to engage
+          </h2>
+          <p className="mt-3 max-w-xl text-sm text-[var(--text-1)]">
+            Three steps. You can stop after any one of them and keep everything produced.
+          </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {engagementSteps.map((step) => (
+              <div key={step.label} className="card-surface flex flex-col p-8">
+                <span className="mono-label text-xs text-[var(--accent)]">{step.label}</span>
+                <h3 className="font-display mt-3 text-lg font-semibold text-[var(--text-0)]">
+                  {step.title}
+                </h3>
+                <p className="mono-label mt-1 text-xs text-[var(--text-2)]">{step.duration}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--text-1)]">
+                  {step.body}
+                </p>
+                {step.cta && (
+                  <CalBookingButton className="btn btn-primary mt-6 w-full">
+                    Book the scope call
+                  </CalBookingButton>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-b border-[var(--border)] bg-[var(--bg-1)] py-20 sm:py-28">
         <div className="container-page">
           <h2 className="font-display max-w-2xl text-[clamp(1.8rem,3.5vw,2.6rem)] font-semibold tracking-tight text-[var(--text-0)]">
@@ -121,9 +180,9 @@ export default function ServicesPage() {
       {/* PRICING BLOCK: intentionally omitted pending Richard's sign-off. */}
 
       <CtaBand
-        heading="Have something that needs to exist?"
-        body="Tell me what you are building and where it hurts. I reply within one business day."
-        buttonLabel="Start the conversation"
+        heading="Building cross-chain or on-chain agents?"
+        body="30 minutes: you describe the problem, I tell you honestly whether I am the right builder and exactly what I would do first."
+        buttonLabel="Book a scope call"
         buttonHref="/contact"
       />
     </>

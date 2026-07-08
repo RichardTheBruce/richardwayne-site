@@ -10,6 +10,7 @@
     "prep-images": "node scripts/prep-images.mjs"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@vercel/analytics": "^2.0.1",

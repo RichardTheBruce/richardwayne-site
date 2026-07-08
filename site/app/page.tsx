@@ -13,13 +13,14 @@ import { ProofLedger } from "@/components/proof-ledger";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ProfessionalServiceJsonLd } from "@/components/professional-service-jsonld";
 import { MagneticLink } from "@/components/magnetic-link";
+import { CalBookingButton } from "@/components/cal-booking-button";
 import { caseStudies } from "@/lib/work";
 
 export const metadata: Metadata = {
   title:
-    "Richard Wayne · Founding Engineer for AI Agents, Cross-Chain, and Full-Stack Builds",
+    "Richard Wayne · Cross-Chain Engineer: LayerZero V2, Circle CCTP, On-Chain Agents",
   description:
-    "Founding engineer for hire. I build AI agent systems that execute under proof, cross-chain infrastructure on LayerZero and Circle CCTP, and full-stack products that hold at 100K users. Coding since 14, shipping for 10 years.",
+    "Founding engineer with production proof: first OFT launchpad on LayerZero V2 (7 chains, ~$300K, 5K users at launch), Circle CCTP including the Solana-to-EVM route, and AFI, an agentic bank moving real money across 23 chains. Book a build call.",
   alternates: {
     canonical: "https://richardthebruce.com",
   },
@@ -27,8 +28,19 @@ export const metadata: Metadata = {
 
 const offers = [
   {
-    title: "AI agent systems",
-    body: "Agents that execute real actions under proof, not chatbots that describe them. Execution layers, observability, kill-switches, and the trust architecture that makes autonomy safe to ship.",
+    title: "Cross-chain and DeFi infrastructure",
+    body: "LayerZero V2 OApp/OFT/ONFT, Circle CCTP including the Solana-to-EVM route, concurrency that never strands funds: Postgres advisory locks, per-address chain locks, fresh-fetched nonces. Battle-tested across 7 chains in production, not demoed once on testnet.",
+    icon: (
+      <>
+        <circle cx="7" cy="12" r="3.4" stroke="var(--accent)" strokeWidth="1.4" fill="none" />
+        <circle cx="17" cy="12" r="3.4" stroke="var(--accent)" strokeWidth="1.4" fill="none" />
+        <path d="M10.4 12H13.6" stroke="var(--accent)" strokeWidth="1.4" />
+      </>
+    ),
+  },
+  {
+    title: "On-chain agent systems",
+    body: "Agents that execute real on-chain actions under proof, not chatbots that describe them. Execution layers, observability, kill-switches, and the trust architecture that makes autonomous money movement safe to ship.",
     icon: (
       <path
         d="M12 3L4 7v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V7l-8-4z"
@@ -40,19 +52,8 @@ const offers = [
     ),
   },
   {
-    title: "Cross-chain and payments infrastructure",
-    body: "LayerZero V2, Circle CCTP, Visa settlement rails. OApp, OFT, and ONFT patterns that are battle-tested in production across 7 chains, not demoed once on testnet.",
-    icon: (
-      <>
-        <circle cx="7" cy="12" r="3.4" stroke="var(--accent)" strokeWidth="1.4" fill="none" />
-        <circle cx="17" cy="12" r="3.4" stroke="var(--accent)" strokeWidth="1.4" fill="none" />
-        <path d="M10.4 12H13.6" stroke="var(--accent)" strokeWidth="1.4" />
-      </>
-    ),
-  },
-  {
     title: "Founding-engineer product builds",
-    body: "The whole stack: contracts, backend, database, frontend, motion design, deploy, and the operational discipline to keep it alive. I have run this loop for 10 years.",
+    body: "Contracts, backend, database, frontend, deploy. I co-founded the first omnichain NFT platform, built a $300K cross-chain launchpad, and run a personal AI system that lets me ship at the pace of a small team. I have run this full-stack loop for 10 years.",
     icon: (
       <path
         d="M4 18V6M4 6l6 4-6 4M12 18h8M12 13h8M12 8h8"
@@ -105,22 +106,19 @@ export default function Home() {
         <div className="container-page relative z-10 grid min-h-[88vh] items-center gap-12 py-24 lg:grid-cols-[7fr_5fr] lg:gap-16 select-none">
           <div>
             <p className="mono-label text-xs text-[var(--text-2)] sm:text-sm">
-              Founding engineer · AI agents · Cross-chain · Full stack
+              LayerZero V2 · Circle CCTP · On-chain agents · 23 chains in production
             </p>
             <h1 className="font-display mt-6 text-[clamp(2.6rem,5.2vw,4.4rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-[var(--text-0)]">
-              I build systems that move real money and hold at 100K users.
+              Cross-chain and on-chain agent infrastructure, production-proven.
             </h1>
             <HeroPathTrace />
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--text-1)] sm:text-lg">
-              Richard Wayne. Founding engineer for the past 10 years. I take
-              products from idea to production: autonomous AI agents,
-              cross-chain infrastructure across 23 chains, and interfaces
-              people trust with their money.
+              Richard Wayne. I built the first OFT launchpad on LayerZero V2 across 7 chains (roughly $300K invested, 5,000 users at launch), the first omnichain NFT platform, and the Circle CCTP Solana-to-EVM route most teams stall on. Right now: AFI, an agentic bank moving real money across 23 chains with Postgres advisory locks and per-address nonce management that never strands funds.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <MagneticLink href="/contact" className="btn btn-primary">
+              <CalBookingButton className="btn btn-primary">
                 Book a build call
-              </MagneticLink>
+              </CalBookingButton>
               <MagneticLink href="/work" className="btn btn-secondary">
                 See the work
               </MagneticLink>
@@ -269,9 +267,9 @@ export default function Home() {
       </section>
 
       <CtaBand
-        heading="Have something that needs to exist?"
-        body="Tell me what you are building and where it hurts. I reply within one business day."
-        buttonLabel="Start the conversation"
+        heading="Building cross-chain or on-chain agents?"
+        body="30 minutes: you describe the problem, I tell you honestly whether I am the right builder and exactly what I would do first. No deck, no pitch."
+        buttonLabel="Book a scope call"
         buttonHref="/contact"
       />
     </>

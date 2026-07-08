@@ -1,13 +1,18 @@
+// CAL_LINK: Replace "richardwayne" with your real Cal.com username.
+// This appears in the hero CTA, the contact page primary button,
+// and the services page booking button.
+export const CAL_LINK = "richard-wayne-bregek/30min";
+
 export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://richardthebruce.com",
   name: "Richard Wayne",
   email: "Richard@richardthebruce.com",
   github: "https://github.com/RichardTheBruce",
-  linkedin: "https://www.linkedin.com/in/richard-wayne-nuro",
-  x: "", // set to https://x.com/RichardTheBruce once the handle is claimed
+  linkedin: "https://www.linkedin.com/in/richardthebruce",
+  x: "https://x.com/TheDevRichard",
   telegram: "", // set to https://t.me/richardthebruce once the channel exists
   discord: "https://discord.gg/PLACEHOLDER", // pending server creation
-  calendar: "", // cal.com link when Richard creates it; hide button when empty
+  calendar: "", // legacy field; booking now uses CAL_LINK above
 };
 
 export type SiteChannel = {

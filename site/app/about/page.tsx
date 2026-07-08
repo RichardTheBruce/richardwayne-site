@@ -304,18 +304,7 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-          <p className="mt-8 text-sm text-[var(--text-2)]">
-            Design pipeline built on a taste-first anti-generic standard.
-            Reference:{" "}
-            <a
-              href="https://www.tasteskill.dev/"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-[var(--accent)] underline underline-offset-4"
-            >
-              tasteskill.dev
-            </a>
-          </p>
+
         </div>
       </section>
 
