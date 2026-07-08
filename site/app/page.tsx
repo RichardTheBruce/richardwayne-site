@@ -14,6 +14,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { ProfessionalServiceJsonLd } from "@/components/professional-service-jsonld";
 import { MagneticLink } from "@/components/magnetic-link";
 import { CalBookingButton } from "@/components/cal-booking-button";
+import { Testimonials } from "@/components/testimonials";
 import { caseStudies } from "@/lib/work";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 const offers = [
   {
     title: "Cross-chain and DeFi infrastructure",
-    body: "LayerZero V2 OApp/OFT/ONFT, Circle CCTP including the Solana-to-EVM route, concurrency that never strands funds: Postgres advisory locks, per-address chain locks, fresh-fetched nonces. Battle-tested across 7 chains in production, not demoed once on testnet.",
+    body: "LayerZero V2 OApp/OFT/ONFT, DVN (decentralized verifier network) configuration and hardening, Circle CCTP including the Solana-to-EVM route, concurrency that never strands funds: Postgres advisory locks, per-address chain locks, fresh-fetched nonces. Battle-tested across 7 chains in production, not demoed once on testnet.",
     icon: (
       <>
         <circle cx="7" cy="12" r="3.4" stroke="var(--accent)" strokeWidth="1.4" fill="none" />
@@ -66,6 +67,9 @@ const offers = [
     ),
   },
 ];
+
+export const AVAILABILITY_SIGNAL =
+  "Available for new cross-chain work. One build slot open. Scope calls answered within one business day.";
 
 const howISteps = [
   {
@@ -106,7 +110,7 @@ export default function Home() {
         <div className="container-page relative z-10 grid min-h-[88vh] items-center gap-12 py-24 lg:grid-cols-[7fr_5fr] lg:gap-16 select-none">
           <div>
             <p className="mono-label text-xs text-[var(--text-2)] sm:text-sm">
-              LayerZero V2 · Circle CCTP · On-chain agents · 23 chains in production
+              LayerZero V2 · DVN config and hardening · Circle CCTP · On-chain agents · 23 chains in production
             </p>
             <h1 className="font-display mt-6 text-[clamp(2.6rem,5.2vw,4.4rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-[var(--text-0)]">
               Cross-chain and on-chain agent infrastructure, production-proven.
@@ -123,6 +127,9 @@ export default function Home() {
                 See the work
               </MagneticLink>
             </div>
+            <p className="mono-label mt-4 text-xs text-[var(--text-2)]">
+              {AVAILABILITY_SIGNAL}
+            </p>
           </div>
           <ProofLedger />
         </div>
@@ -168,6 +175,8 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <Testimonials />
 
       <section className="border-b border-[var(--border)] py-24 sm:py-32">
         <div className="container-page">

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaBand } from "@/components/cta-band";
 import { ProfessionalServiceJsonLd } from "@/components/professional-service-jsonld";
 import { CalBookingButton } from "@/components/cal-booking-button";
+import { Testimonials } from "@/components/testimonials";
+import { faqs } from "@/app/faq/page";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -15,7 +18,7 @@ export const metadata: Metadata = {
 const offers = [
   {
     title: "Cross-chain and DeFi infrastructure",
-    body: "LayerZero V2 OApp, OFT, and ONFT patterns that are battle-tested in production across 7 chains. Circle CCTP including the Solana-to-EVM route most teams stall on. Concurrency that never strands funds: Postgres advisory locks, per-address chain locks, fresh-fetched nonces on every transaction. Visa settlement rails against on-chain balances.",
+    body: "LayerZero V2 OApp, OFT, and ONFT patterns that are battle-tested in production across 7 chains. DVN (decentralized verifier network) configuration and security hardening so your bridge does not get drained. Circle CCTP including the Solana-to-EVM route most teams stall on. Concurrency that never strands funds: Postgres advisory locks, per-address chain locks, fresh-fetched nonces on every transaction. Visa settlement rails against on-chain balances.",
     goodFit:
       "Good fit if: you are going multi-chain and the bridges scare you. You need OFT or ONFT done right the first time, not after a botched first attempt. You are settling card or fiat rails against on-chain balances and cannot afford a stranded transaction.",
   },
@@ -83,7 +86,7 @@ export default function ServicesPage() {
       <section className="border-b border-[var(--border)] py-20 sm:py-28">
         <div className="container-page">
           <p className="mono-label text-xs text-[var(--text-2)]">
-            LayerZero V2 · Circle CCTP · On-chain agents · 23 chains in production
+            LayerZero V2 · DVN config and hardening · Circle CCTP · On-chain agents · 23 chains in production
           </p>
           <h1 className="font-display mt-4 max-w-3xl text-[clamp(2.2rem,5vw,3.4rem)] font-semibold tracking-tight text-[var(--text-0)]">
             Services
@@ -177,7 +180,71 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* PRICING BLOCK: intentionally omitted pending Richard's sign-off. */}
+      {/* Pricing */}
+      <section className="border-b border-[var(--border)] py-20 sm:py-28">
+        <div className="container-page">
+          <h2 className="font-display max-w-2xl text-[clamp(1.8rem,3.5vw,2.6rem)] font-semibold tracking-tight text-[var(--text-0)]">
+            Pricing
+          </h2>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <div className="card-surface flex flex-col p-8">
+              <p className="mono-label text-xs text-[var(--text-2)]">Hourly build work</p>
+              <p className="font-display mt-3 text-3xl font-semibold text-[var(--text-0)]">
+                $90 <span className="text-base font-normal text-[var(--text-2)]">/ hr</span>
+              </p>
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-[var(--text-1)]">
+                A straightforward rate for design, backend, and full-stack build work. $90 per hour, billed against shipped work you can see.
+              </p>
+            </div>
+
+            <div className="card-surface flex flex-col border-[var(--accent)]/40 p-8 ring-1 ring-[var(--accent)]/40">
+              <p className="mono-label text-xs text-[var(--accent)]">Cross-chain audit</p>
+              <p className="font-display mt-3 text-3xl font-semibold text-[var(--text-0)]">
+                $1,000 <span className="text-base font-normal text-[var(--text-2)]">fixed</span>
+              </p>
+              <p className="mono-label mt-1 text-xs text-[var(--text-2)]">One week</p>
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-[var(--text-1)]">
+                A one-week cross-chain audit. I review your LayerZero, CCTP, and DVN setup for the failure modes that strand funds or get bridges drained, and hand you a written report with the exact fixes. Fixed at $1,000. You keep the report whether or not we work together after.
+              </p>
+              <CalBookingButton className="btn btn-primary mt-6 w-full">
+                Book the audit
+              </CalBookingButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <Testimonials />
+
+      {/* Condensed FAQ */}
+      <section className="border-b border-[var(--border)] bg-[var(--bg-1)] py-20 sm:py-28">
+        <div className="container-page">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-display max-w-2xl text-[clamp(1.8rem,3.5vw,2.6rem)] font-semibold tracking-tight text-[var(--text-0)]">
+              Common questions
+            </h2>
+            <Link href="/faq" className="shrink-0 text-sm text-[var(--accent)] underline underline-offset-4">
+              Full FAQ &rarr;
+            </Link>
+          </div>
+          <div className="mt-10 max-w-3xl space-y-0">
+            {faqs.slice(0, 4).map((faq, index) => (
+              <div
+                key={index}
+                className="border-b border-[var(--border)] py-6 first:pt-0 last:border-0"
+              >
+                <h3 className="font-display text-base font-semibold text-[var(--text-0)]">
+                  {faq.q}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--text-1)]">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <CtaBand
         heading="Building cross-chain or on-chain agents?"

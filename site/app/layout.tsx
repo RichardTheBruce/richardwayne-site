@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PersonJsonLd } from "@/components/person-jsonld";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -32,7 +33,8 @@ export const metadata: Metadata = {
     "autonomous agents",
     "founding engineer",
     "cross-chain infrastructure",
-    "LayerZero",
+    "LayerZero V2",
+    "DVN decentralized verifier network",
     "Circle CCTP",
     "blockchain infrastructure",
     "Solidity",
@@ -42,6 +44,7 @@ export const metadata: Metadata = {
     "agentic systems",
     "OFT",
     "ONFT",
+    "cross-chain audit",
   ],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
@@ -88,29 +91,7 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-[var(--bg-0)] text-[var(--text-0)] antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: site.name,
-              url: "https://richardthebruce.com",
-              jobTitle: "Founding Engineer",
-              description:
-                "Founder and engineer specializing in autonomous AI agent systems, cross-chain blockchain infrastructure, and full-stack product builds.",
-              image: "https://richardthebruce.com/richard.jpg",
-              email: site.email,
-              alumniOf: {
-                "@type": "CollegeOrUniversity",
-                name: "Rutgers University",
-              },
-              sameAs: [site.github, site.linkedin, site.x, site.telegram].filter(
-                (url) => url && !url.includes("PLACEHOLDER")
-              ),
-            }),
-          }}
-        />
+        <PersonJsonLd />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -30,7 +30,7 @@ export const caseStudies: CaseStudy[] = [
     title: "AFI",
     role: "Founder and Lead Architect",
     summary:
-      "An agentic bank where you talk to your Visa card and a bonded AI agent moves your money. Nothing counts as done without a confirmed on-chain transaction hash, so the agent cannot lie about what it did.",
+      "23 chains, real money, and nothing is marked done without a confirmed on-chain transaction hash. An agentic bank where you talk to your Visa card and a bonded AI agent moves your money, so the agent cannot lie about what it did.",
     chips: ["AI agents", "LayerZero V2", "Circle CCTP", "Visa rails", "PostgreSQL"],
     cardImage: {
       src: "/work/afi-agent-cards-chat.png",
@@ -82,7 +82,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Memetropolis",
     role: "Founder and CTO",
     summary:
-      "The first OFT launchpad on LayerZero, live across 7 EVM chains. About $300K invested, 810 commits, 5,000 users at launch, and concurrency that holds when two users hit the same second.",
+      "7 chains, about $300K, 5,000 users at launch, zero stranded funds under concurrency. The first OFT launchpad on LayerZero, 810 commits, and concurrency that holds when two users hit the same second.",
     chips: ["Solidity", "LayerZero V2", "Subgraph", "Next.js"],
     cardImage: {
       src: "/work/memetropolis-landing-crop.png",
@@ -140,7 +140,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Omni-X",
     role: "Co-Founder · 2022",
     summary:
-      "The first natively omnichain NFT platform. Creator of Greg, the first onchain ONFT, and auditor of the original Gh0stly Gh0sts contract, the first omnichain NFT collection.",
+      "First natively omnichain NFT platform (2022), creator of Greg, the first onchain ONFT. Co-founded Omni-X and audited the original Gh0stly Gh0sts contract, the first omnichain NFT collection.",
     chips: ["ONFT", "LayerZero", "Marketplace"],
     cardImage: {
       src: "/work/omnix-landing.png",
@@ -176,7 +176,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Federal-scale PPE supplier",
     role: "Solo Engineer · 2026",
     summary:
-      "A modern storefront plus a signal-driven outbound engine over SAM.gov, OSHA, and FEMA data. Every lead lands enriched with affected-population estimates and SKU recommendations before the sales team wakes up.",
+      "Deployed on Vercel with a daily signal pipeline that delivers enriched federal procurement leads before the sales team wakes up. A modern storefront plus a signal-driven outbound engine over SAM.gov, OSHA, and FEMA data, with affected-population estimates and SKU recommendations per lead.",
     chips: ["Next.js", "Postgres", "Signal pipeline", "Vercel"],
     cardImage: {
       src: "/work/ppe-rebuild-landing-crop.png",

@@ -1,0 +1,24 @@
+# Richard Wayne
+Cross-chain and on-chain agent engineer. Specialist in LayerZero V2, DVN (decentralized verifier network) configuration and hardening, Circle CCTP (including the Solana to EVM route), OFT and ONFT token standards, and AI agents that execute real on-chain actions under proof.
+
+## What he does
+- Cross-chain and DeFi infrastructure: LayerZero V2 OApp/OFT/ONFT, DVN setup and security review, Circle CCTP Solana-to-EVM settlement, concurrency that never strands funds.
+- On-chain agent systems: agents that execute real actions under proof (a confirmed on-chain transaction hash), with observability and kill-switches.
+- Founding-engineer product builds: contracts, backend, database, frontend, deploy.
+
+## Proof
+- Built the first OFT launchpad on LayerZero V2: 7 EVM chains, about $300K invested, 5,000 users at launch.
+- Runs AFI, an agentic bank moving real money across a 23-chain settlement matrix via LayerZero V2 and Circle CCTP.
+- Co-founded Omni-X (2022), the first natively omnichain NFT platform. Created Greg, the first onchain ONFT.
+- Published researcher: "On the Matter of Consciousness and Its Equivocation" (SSRN, 2026).
+
+## Pricing
+- Hourly build work: $90 per hour (design, backend, full-stack).
+- Cross-chain audit: $1,000 fixed, one week.
+
+## Hire
+- Book a 30-minute scope call: https://richardthebruce.com/contact
+- Site: https://richardthebruce.com
+- GitHub: https://github.com/RichardTheBruce
+- LinkedIn: https://www.linkedin.com/in/richardthebruce
+- X: https://x.com/TheDevRichard

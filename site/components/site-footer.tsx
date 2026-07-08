@@ -10,13 +10,20 @@ const workLinks = [
   { label: "Federal-scale PPE supplier", href: "/work/federal-ppe" },
 ];
 
+const siteLinks = [
+  { label: "Services", href: "/services" },
+  { label: "FAQ", href: "/faq" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
 export function SiteFooter() {
   const channels = getVisibleChannels();
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--bg-1)]">
-      <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <p className="font-display text-lg font-semibold text-[var(--text-0)]">
             Richard Wayne
@@ -33,6 +40,22 @@ export function SiteFooter() {
           <p className="mono-label text-xs text-[var(--text-2)]">Work</p>
           <ul className="mt-4 space-y-3">
             {workLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-sm text-[var(--text-1)] transition-colors hover:text-[var(--text-0)]"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="mono-label text-xs text-[var(--text-2)]">Site</p>
+          <ul className="mt-4 space-y-3">
+            {siteLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
