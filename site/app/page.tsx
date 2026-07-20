@@ -260,7 +260,7 @@ export default function Home() {
               systems, I have raised $750K across two projects, shipped a
               $300K cross-chain launchpad, co-founded the first omnichain NFT
               platform, and run a sole-proprietor venture to $20M in revenue
-              in 2019. I graduated summa cum laude from Rutgers and advised
+              in 2019. I graduated magna cum laude from Rutgers and advised
               its electrical engineering capstone team. I work daily with a
               personal AI neural net I designed, which is why I ship at the
               pace of a small team.

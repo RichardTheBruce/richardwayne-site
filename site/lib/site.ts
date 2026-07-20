@@ -9,7 +9,7 @@ export const site = {
   email: "Richard@richardthebruce.com",
   github: "https://github.com/RichardTheBruce",
   linkedin: "https://www.linkedin.com/in/richardthebruce",
-  x: "https://x.com/TheDevRichard",
+  x: "https://x.com/DickTheDev",
   telegram: "", // set to https://t.me/richardthebruce once the channel exists
   discord: "https://discord.gg/PLACEHOLDER", // pending server creation
   calendar: "", // legacy field; booking now uses CAL_LINK above

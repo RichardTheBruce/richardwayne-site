@@ -160,7 +160,7 @@ export default function AboutPage() {
         <div className="container-page">
           <Timeline entries={timelineEntries} />
           <p className="mt-14 pl-10 text-sm text-[var(--text-2)]">
-            Rutgers University, summa cum laude.
+            Rutgers University, magna cum laude.
           </p>
         </div>
       </section>

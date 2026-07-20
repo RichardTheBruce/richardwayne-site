@@ -8,7 +8,7 @@ export function PersonJsonLd() {
     sameAs: [
       "https://github.com/RichardTheBruce",
       "https://www.linkedin.com/in/richardthebruce",
-      "https://x.com/TheDevRichard",
+      "https://x.com/DickTheDev",
     ],
     knowsAbout: [
       "LayerZero V2",
